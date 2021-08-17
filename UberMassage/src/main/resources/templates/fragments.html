@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head">
+    <meta charset="UTF-8"/>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title th:text="${title}">Inventory Application</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+</head>
+<body>
+<header class="text-center" th:fragment="header">
+    <div class="container">
+        <h1 th:text="${title}">REPLACE</h1>
+
+
+        <nav>
+            <ul class ="nav h4">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/schedule}">
+                        Schedule</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/profile}">
+                        Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/login}">
+                        Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/signup}">
+                        Signup</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/}">
+                        Home</a>
+                </li>
+            </ul>
+
+        </nav>
+    </div>
+</header>
+
+</body>
+</html>
