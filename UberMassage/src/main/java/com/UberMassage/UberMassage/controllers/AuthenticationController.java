@@ -104,7 +104,7 @@ public class AuthenticationController {
 
         if (errors.hasErrors()) {
             model.addAttribute("title", "Log In");
-            //return "login";
+            return "login";
         }
 
         User theUser = userRepository.findByUsername(loginFormDTO.getUsername());
