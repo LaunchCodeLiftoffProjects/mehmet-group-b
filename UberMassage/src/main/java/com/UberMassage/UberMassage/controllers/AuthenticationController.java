@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.http.HttpServletRequest;
@@ -47,6 +48,7 @@ public class AuthenticationController {
     @GetMapping("/register")
     public String displayRegistrationForm(Model model) {
         model.addAttribute(new RegisterFormDTO());
+        model.addAttribute(new User());
         model.addAttribute("title", "Register");
         return "register";
     }
@@ -77,7 +79,11 @@ public class AuthenticationController {
             return "register";
         }
 
-        User newUser = new User(registerFormDTO.getUsername(), registerFormDTO.getPassword());
+        User newUser = new User(registerFormDTO.getUsername(),
+                registerFormDTO.getPassword(), registerFormDTO.getFirstName()
+                , registerFormDTO.getLastName(), registerFormDTO.getState(),
+                registerFormDTO.getCity(), registerFormDTO.getEmail(),
+                registerFormDTO.getPhoneNumber());
         userRepository.save(newUser);
         setUserInSession(request.getSession(), newUser);
 
@@ -98,7 +104,7 @@ public class AuthenticationController {
 
         if (errors.hasErrors()) {
             model.addAttribute("title", "Log In");
-            return "login";
+            //return "login";
         }
 
         User theUser = userRepository.findByUsername(loginFormDTO.getUsername());
@@ -119,7 +125,10 @@ public class AuthenticationController {
 
         setUserInSession(request.getSession(), theUser);
 
-        return "redirect:";
+        System.out.println(theUser.getId());
+
+        return "redirect:profile/" + theUser.getId() ;
+
     }
 
     @GetMapping("/logout")
