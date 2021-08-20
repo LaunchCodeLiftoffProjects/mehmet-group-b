@@ -1,20 +1,13 @@
-package com.UberMassage.UberMassage.models;
+package com.UberMassage.UberMassage.models.dto;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import com.UberMassage.UberMassage.models.Hours;
+import com.UberMassage.UberMassage.models.User;
+
 import javax.persistence.OneToOne;
-import java.util.HashMap;
 
-@Entity
-public class Therapist {
+public class TherapistRegisterFormDTO {
 
-//    @OneToOne(mappedBy="user")
-//    private User user;
-
-    @Id
-    @GeneratedValue
-    private int therapistId;
+    private User user;
 
     private String typeOfMassage;
 
@@ -24,26 +17,17 @@ public class Therapist {
 
     private String appointment;
 
-    //private Hours hoursOfOperation;
+    private Hours hoursOfOperation;
 
     private String gender;
 
-    public Therapist() {
-
+    public User getUser() {
+        return user;
     }
 
-    public Therapist(String gender) {
-        this.gender = gender;
+    public void setUser(User user) {
+        this.user = user;
     }
-
-//    public Therapist(User user, String typeOfMassage, double costOfService,
-//                     String gender) {
-//
-//        this.user = user;
-//        this.typeOfMassage = typeOfMassage;
-//        this.costOfService = costOfService;
-//        this.gender = gender;
-//    }
 
     public String getTypeOfMassage() {
         return typeOfMassage;
@@ -77,14 +61,14 @@ public class Therapist {
         this.appointment = appointment;
     }
 
-//    public Hours getHoursOfOperation() {
-//        return hoursOfOperation;
-//    }
-//
-//    public void setHoursOfOperation(
-//            Hours hoursOfOperation) {
-//        this.hoursOfOperation = hoursOfOperation;
-//    }
+    public Hours getHoursOfOperation() {
+        return hoursOfOperation;
+    }
+
+    public void setHoursOfOperation(
+            Hours hoursOfOperation) {
+        this.hoursOfOperation = hoursOfOperation;
+    }
 
     public String getGender() {
         return gender;

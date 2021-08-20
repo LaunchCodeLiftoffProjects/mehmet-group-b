@@ -1,9 +1,12 @@
 package com.UberMassage.UberMassage.controllers;
 
+import com.UberMassage.UberMassage.data.TherapistRepository;
 import com.UberMassage.UberMassage.data.UserRepository;
+import com.UberMassage.UberMassage.models.Therapist;
 import com.UberMassage.UberMassage.models.User;
 import com.UberMassage.UberMassage.models.dto.LoginFormDTO;
 import com.UberMassage.UberMassage.models.dto.RegisterFormDTO;
+import com.UberMassage.UberMassage.models.dto.TherapistRegisterFormDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,6 +26,9 @@ public class AuthenticationController {
 
     @Autowired
     UserRepository userRepository;
+
+    @Autowired
+    TherapistRepository therapistRepository;
 
     private static final String userSessionKey = "user";
 
@@ -130,6 +136,26 @@ public class AuthenticationController {
         return "redirect:profile/" + theUser.getId() ;
 
     }
+
+    @GetMapping("/therapistsignup")
+    public String displayTherapistSignupForm(Model model) {
+        model.addAttribute(new TherapistRegisterFormDTO());
+        model.addAttribute("title", "This is just a test");
+        return "therapistsignup/index";
+    }
+
+    @PostMapping("/therapistsignup")
+    public String processTherapistSignup(@ModelAttribute @Valid TherapistRegisterFormDTO therapistRegisterFormDTO,
+                                         Errors errors, HttpServletRequest request,
+                                         Model model) {
+
+        Therapist newTherapist =
+                new Therapist(therapistRegisterFormDTO.getGender());
+        therapistRepository.save(newTherapist);
+
+        return "redirect:";
+    }
+
 
     @GetMapping("/logout")
     public String logout(HttpServletRequest request){
