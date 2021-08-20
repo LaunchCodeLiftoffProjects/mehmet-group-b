@@ -10,9 +10,11 @@ import javax.validation.constraints.NotNull;
 @Entity
 public class User extends AbstractEntity {
 
-    @OneToOne ()
+    @OneToOne
     @JoinColumn(name = "therapist_id")
     private Therapist therapist;
+
+
 
     public User() {
 
@@ -24,7 +26,11 @@ public class User extends AbstractEntity {
                 state, city, email, phoneNumber);
     }
 
+    public Therapist getTherapist() {
+        return therapist;
+    }
 
-
-
+    public void setTherapist(Therapist therapist) {
+        this.therapist = therapist;
+    }
 }

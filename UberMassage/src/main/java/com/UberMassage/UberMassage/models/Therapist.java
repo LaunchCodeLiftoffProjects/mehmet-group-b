@@ -1,13 +1,11 @@
 package com.UberMassage.UberMassage.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 import java.util.HashMap;
 
 @Entity
 public class Therapist {
+
 
 
 
@@ -27,13 +25,13 @@ public class Therapist {
 
     //private Hours hoursOfOperation;
 
-    private String gender;
+    private Gender gender;
 
     public Therapist() {
 
     }
 
-    public Therapist(User user,String gender) {
+    public Therapist(User user, Gender gender) {
         this.user =user;
         this.gender = gender;
     }
@@ -97,11 +95,19 @@ public class Therapist {
         this.user = user;
     }
 
-    public String getGender() {
+    public Gender getGender() {
         return gender;
     }
 
-    public void setGender(String gender) {
+    public void setGender(Gender gender) {
         this.gender = gender;
+    }
+
+    public int getTherapistId() {
+        return therapistId;
+    }
+
+    public void setTherapistId(int therapistId) {
+        this.therapistId = therapistId;
     }
 }

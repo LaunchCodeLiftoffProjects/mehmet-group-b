@@ -19,14 +19,24 @@
 <p>username</p>
 <h1 th:text="${user.username}"></h1>
 
+<div th:if="${user.therapist} != null">
+    <br>
+    <br>
+    <p>Stephen</p>
+    <h1 th:text="${user.therapist.gender}"></h1>
 
-<br>
-<br>
+</div>
 
-<p>Lucas the Lucster</p>
-<p>Lucas do you want to become a therapist?</p>
-<a th:href="@{/therapistsignup/}">
-    Yes</a>
+
+<div th:unless="${user.therapist} != null">
+    <br>
+    <br>
+    <p>Lucas the Lucster</p>
+    <p>Lucas do you want to become a therapist?</p>
+    <a th:href="@{/therapistsignup/}">
+        Yes</a>
+</div>
+
 
 </body>
 </html>

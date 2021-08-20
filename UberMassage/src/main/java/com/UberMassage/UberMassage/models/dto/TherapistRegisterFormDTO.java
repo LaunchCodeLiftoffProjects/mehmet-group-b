@@ -1,5 +1,6 @@
 package com.UberMassage.UberMassage.models.dto;
 
+import com.UberMassage.UberMassage.models.Gender;
 import com.UberMassage.UberMassage.models.Hours;
 import com.UberMassage.UberMassage.models.User;
 
@@ -19,7 +20,7 @@ public class TherapistRegisterFormDTO {
 
     private Hours hoursOfOperation;
 
-    private String gender;
+    private Gender gender;
 
     public User getUser() {
         return user;
@@ -70,11 +71,11 @@ public class TherapistRegisterFormDTO {
         this.hoursOfOperation = hoursOfOperation;
     }
 
-    public String getGender() {
+    public Gender getGender() {
         return gender;
     }
 
-    public void setGender(String gender) {
+    public void setGender(Gender gender) {
         this.gender = gender;
     }
 }

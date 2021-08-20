@@ -155,7 +155,9 @@ public class AuthenticationController {
                 new Therapist(newUser, therapistRegisterFormDTO.getGender());
         therapistRepository.save(newTherapist);
 
-        System.out.println(newTherapist.getUser().getId());
+        newUser.setTherapist(newTherapist);
+        userRepository.save(newUser);
+
 
         return "redirect:";
     }
