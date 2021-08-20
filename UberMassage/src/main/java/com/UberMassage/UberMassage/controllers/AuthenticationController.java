@@ -149,9 +149,13 @@ public class AuthenticationController {
                                          Errors errors, HttpServletRequest request,
                                          Model model) {
 
+        User newUser = getUserFromSession(request.getSession());
+
         Therapist newTherapist =
-                new Therapist(therapistRegisterFormDTO.getGender());
+                new Therapist(newUser, therapistRegisterFormDTO.getGender());
         therapistRepository.save(newTherapist);
+
+        System.out.println(newTherapist.getUser().getId());
 
         return "redirect:";
     }
