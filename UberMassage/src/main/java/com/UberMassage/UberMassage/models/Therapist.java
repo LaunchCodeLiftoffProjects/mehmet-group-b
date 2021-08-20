@@ -9,9 +9,10 @@ import java.util.HashMap;
 @Entity
 public class Therapist {
 
-//    @OneToOne(mappedBy="user")
-//    private User user;
 
+
+    @OneToOne (mappedBy = "therapist")
+    private User user;
     @Id
     @GeneratedValue
     private int therapistId;
@@ -32,7 +33,8 @@ public class Therapist {
 
     }
 
-    public Therapist(String gender) {
+    public Therapist(User user,String gender) {
+        this.user =user;
         this.gender = gender;
     }
 
@@ -85,6 +87,15 @@ public class Therapist {
 //            Hours hoursOfOperation) {
 //        this.hoursOfOperation = hoursOfOperation;
 //    }
+
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 
     public String getGender() {
         return gender;

@@ -3,10 +3,16 @@ package com.UberMassage.UberMassage.models;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 
 @Entity
 public class User extends AbstractEntity {
+
+    @OneToOne ()
+    @JoinColumn(name = "therapist_id")
+    private Therapist therapist;
 
     public User() {
 
