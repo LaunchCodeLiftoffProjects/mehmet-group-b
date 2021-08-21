@@ -51,7 +51,7 @@ public class ThereapistSignupController {
     public String displayTherapistSignupForm(Model model) {
         model.addAttribute("genders", Gender.values());
 
-        model.addAttribute(new TherapistRegisterFormDTO());
+        model.addAttribute("therapist",new TherapistRegisterFormDTO());
         model.addAttribute("title", "This is just a test");
         return "therapistsignup/index";
     }

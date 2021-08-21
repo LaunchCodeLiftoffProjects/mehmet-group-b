@@ -4,20 +4,25 @@
 <body>
 <header th:replace="fragments::header"></header>
 
-<form method="post">
+<form method="post" th:obeject="${therapist}">
     <div class="form-group">
         <label>Gender
-            <ul >
+            <ul>
                 <li th:each="gender : ${genders}">
-                    <input type="radio" th:text="${gender.gender}">
+                    <input type="radio" name ="genderChoice" th:text="${gender.gender}"
+                           th:field="${therapistRegisterFormDTO.gender}">
 
                 </li>
             </ul>
 
         </label>
         <p class="error"
-           th:errors="${therapistRegisterFormDTO.gender}"></p>
+           th:errors="${therapist.gender}"></p>
     </div>
+
+
+
+
 <!--    <div class="form-group">-->
 <!--        <label>First Name-->
 <!--            <input class="form-control"-->
