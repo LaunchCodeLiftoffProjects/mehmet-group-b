@@ -7,8 +7,13 @@
 <form method="post">
     <div class="form-group">
         <label>Gender
-            <input class="form-control"
-                   th:field="${therapistRegisterFormDTO.gender}" />
+            <ul >
+                <li th:each="gender : ${genders}">
+                    <input type="radio" th:text="${gender.gender}">
+
+                </li>
+            </ul>
+
         </label>
         <p class="error"
            th:errors="${therapistRegisterFormDTO.gender}"></p>

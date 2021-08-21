@@ -6,9 +6,6 @@ import java.util.HashMap;
 @Entity
 public class Therapist {
 
-
-
-
     @OneToOne (mappedBy = "therapist")
     private User user;
     @Id
