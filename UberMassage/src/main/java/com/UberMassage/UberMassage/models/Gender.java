@@ -4,7 +4,7 @@ public enum Gender {
     MALE("Male"),
     FEMALE("Female"),
     OTHER("Other"),
-    APACHEATTACKHELI("Apache Attack Heli"),
+    APACHEATTACKHELICOPTER("Apache Attack Helicopter"),
     SPACE("Space");
 
     private final String gender;

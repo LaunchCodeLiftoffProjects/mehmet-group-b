@@ -3,6 +3,7 @@ package com.UberMassage.UberMassage.controllers;
 import com.UberMassage.UberMassage.data.TherapistRepository;
 import com.UberMassage.UberMassage.data.UserRepository;
 import com.UberMassage.UberMassage.models.Gender;
+import com.UberMassage.UberMassage.models.Hours;
 import com.UberMassage.UberMassage.models.Therapist;
 import com.UberMassage.UberMassage.models.User;
 import com.UberMassage.UberMassage.models.dto.TherapistRegisterFormDTO;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.util.Locale;
 import java.util.Optional;
 
 @Controller
@@ -51,7 +53,7 @@ public class ThereapistSignupController {
     public String displayTherapistSignupForm(Model model) {
         model.addAttribute("genders", Gender.values());
 
-        model.addAttribute("therapist",new TherapistRegisterFormDTO());
+        model.addAttribute("therapist", new TherapistRegisterFormDTO());
         model.addAttribute("title", "This is just a test");
         return "therapistsignup/index";
     }
@@ -61,12 +63,20 @@ public class ThereapistSignupController {
                                          Errors errors, HttpServletRequest request,
                                          Model model) {
 
-
-
         User newUser = getUserFromSession(request.getSession());
 
+        Hours testHours = new Hours();
+
+        testHours.setStartTime(8, true);
+        testHours.setFinishTime(5, false);
+        therapistRegisterFormDTO.setHoursOfOperation(testHours);
+
         Therapist newTherapist =
-                new Therapist(newUser, therapistRegisterFormDTO.getGender());
+                new Therapist(newUser, therapistRegisterFormDTO.getGender(),
+                       therapistRegisterFormDTO.getHoursOfOperation());
+
+
+
         therapistRepository.save(newTherapist);
 
         newUser.setTherapist(newTherapist);
