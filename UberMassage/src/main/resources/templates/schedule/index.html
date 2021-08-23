@@ -16,6 +16,13 @@
         </thead>
         <tbody>
 
+            <th:block th:each="user : ${users}">
+                <th:block th:if="${user.therapist} != null">
+                <tr>
+                    <td th:text="${user.firstName}"></td>
+                </tr>
+                </th:block>
+            </th:block>
         </tbody>
     </table>
 </div>
