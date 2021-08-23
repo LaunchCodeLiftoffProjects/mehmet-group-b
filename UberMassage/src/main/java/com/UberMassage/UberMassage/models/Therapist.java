@@ -6,9 +6,6 @@ import java.util.HashMap;
 @Entity
 public class Therapist {
 
-
-
-
     @OneToOne (mappedBy = "therapist")
     private User user;
     @Id
@@ -23,7 +20,7 @@ public class Therapist {
 
     private String appointment;
 
-    //private Hours hoursOfOperation;
+    private Hours hoursOfOperation;
 
     private Gender gender;
 
@@ -31,9 +28,11 @@ public class Therapist {
 
     }
 
-    public Therapist(User user, Gender gender) {
-        this.user =user;
+    public Therapist(User user, Gender gender, Hours hoursOfOperation) {
+        this.user = user;
         this.gender = gender;
+        this.hoursOfOperation = hoursOfOperation;
+
     }
 
 //    public Therapist(User user, String typeOfMassage, double costOfService,
@@ -77,14 +76,14 @@ public class Therapist {
         this.appointment = appointment;
     }
 
-//    public Hours getHoursOfOperation() {
-//        return hoursOfOperation;
-//    }
-//
-//    public void setHoursOfOperation(
-//            Hours hoursOfOperation) {
-//        this.hoursOfOperation = hoursOfOperation;
-//    }
+    public Hours getHoursOfOperation() {
+        return hoursOfOperation;
+    }
+
+    public void setHoursOfOperation(
+            Hours hoursOfOperation) {
+        this.hoursOfOperation = hoursOfOperation;
+    }
 
 
     public User getUser() {
@@ -109,5 +108,10 @@ public class Therapist {
 
     public void setTherapistId(int therapistId) {
         this.therapistId = therapistId;
+    }
+
+    public void genderChange(Gender genderTest, String test) {
+        Gender result = genderTest;
+        test.toUpperCase();
     }
 }

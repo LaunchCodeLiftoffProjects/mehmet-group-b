@@ -137,30 +137,7 @@ public class AuthenticationController {
 
     }
 
-    @GetMapping("/therapistsignup")
-    public String displayTherapistSignupForm(Model model) {
-        model.addAttribute(new TherapistRegisterFormDTO());
-        model.addAttribute("title", "This is just a test");
-        return "therapistsignup/index";
-    }
 
-    @PostMapping("/therapistsignup")
-    public String processTherapistSignup(@ModelAttribute @Valid TherapistRegisterFormDTO therapistRegisterFormDTO,
-                                         Errors errors, HttpServletRequest request,
-                                         Model model) {
-
-        User newUser = getUserFromSession(request.getSession());
-
-        Therapist newTherapist =
-                new Therapist(newUser, therapistRegisterFormDTO.getGender());
-        therapistRepository.save(newTherapist);
-
-        newUser.setTherapist(newTherapist);
-        userRepository.save(newUser);
-
-
-        return "redirect:";
-    }
 
 
     @GetMapping("/logout")

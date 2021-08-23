@@ -4,38 +4,42 @@
 <body>
 <header th:replace="fragments::header"></header>
 
-<p>Name</p>
+<p>First name</p>
 <h1 th:text="${user.firstName}"></h1>
-<p>Name 2 second boogaloo</p>
+<p>Last name</p>
 <h1 th:text="${user.lastName}"></h1>
-<p>email</p>
+<p>Email</p>
 <h1 th:text="${user.email}"></h1>
-<p>state</p>
+<p>State</p>
 <h1 th:text="${user.state}"></h1>
-<p>city</p>
+<p>City</p>
 <h1 th:text="${user.city}"></h1>
-<p>phone Numbers</p>
+<p>Phone number</p>
 <h1 th:text="${user.phoneNumber}"></h1>
-<p>username</p>
+<p>Username</p>
 <h1 th:text="${user.username}"></h1>
 
 <div th:if="${user.therapist} != null">
     <br>
     <br>
-    <p>Stephen</p>
+    <p>Your Gender</p>
     <h1 th:text="${user.therapist.gender}"></h1>
+    <p>Your Hours</p>
+    <h1 th:text="${user.therapist.hoursOfOperation.startConverted()}"></h1>
+    <p>Your Stop Time</p>
+    <h1
+            th:text="${user.therapist.hoursOfOperation.finishConverted}"></h1>
 
 </div>
 
 
-<div th:unless="${user.therapist} != null">
+<!--<div th:unless="${user.therapist} != null">-->
     <br>
     <br>
-    <p>Lucas the Lucster</p>
-    <p>Lucas do you want to become a therapist?</p>
+    <p>Are you a therapist? Sign up now to provide services.</p>
     <a th:href="@{/therapistsignup/}">
         Yes</a>
-</div>
+<!--</div>-->
 
 
 </body>
