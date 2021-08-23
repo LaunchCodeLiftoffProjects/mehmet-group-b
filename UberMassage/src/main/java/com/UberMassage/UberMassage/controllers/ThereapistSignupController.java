@@ -11,10 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -52,7 +49,10 @@ public class ThereapistSignupController {
     @GetMapping()
     public String displayTherapistSignupForm(Model model) {
         model.addAttribute("genders", Gender.values());
+        model.addAttribute("am1", true);
+        model.addAttribute("am2", true);
 
+        model.addAttribute("hours", new Hours());
         model.addAttribute("therapist", new TherapistRegisterFormDTO());
         model.addAttribute("title", "This is just a test");
         return "therapistsignup/index";
@@ -60,16 +60,20 @@ public class ThereapistSignupController {
 
     @PostMapping()
     public String processTherapistSignup(@ModelAttribute @Valid TherapistRegisterFormDTO therapistRegisterFormDTO,
+                                         Hours hours,
                                          Errors errors, HttpServletRequest request,
+                                         @RequestParam(value = "startTime") int startTime,
+                                         boolean isStartAM,
+                                         @RequestParam(value = "finishTime") int finishTime,
+                                         boolean isFinishAM,
                                          Model model) {
 
         User newUser = getUserFromSession(request.getSession());
 
-        Hours testHours = new Hours();
+        hours.setStartTime(startTime, isStartAM);
+        hours.setFinishTime(finishTime, isFinishAM);
 
-        testHours.setStartTime(8, true);
-        testHours.setFinishTime(5, false);
-        therapistRegisterFormDTO.setHoursOfOperation(testHours);
+        therapistRegisterFormDTO.setHoursOfOperation(hours);
 
         Therapist newTherapist =
                 new Therapist(newUser, therapistRegisterFormDTO.getGender(),

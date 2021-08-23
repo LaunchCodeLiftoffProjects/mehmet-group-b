@@ -24,6 +24,11 @@
     <br>
     <p>Your Gender</p>
     <h1 th:text="${user.therapist.gender}"></h1>
+    <p>Your Hours</p>
+    <h1 th:text="${user.therapist.hoursOfOperation.startConverted()}"></h1>
+    <p>Your Stop Time</p>
+    <h1
+            th:text="${user.therapist.hoursOfOperation.finishConverted}"></h1>
 
 </div>
 

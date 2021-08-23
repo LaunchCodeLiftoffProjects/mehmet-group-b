@@ -59,4 +59,25 @@ public class Hours {
     public void setFinishTime(int finishTime, boolean am) {
         this.finishTime = turnMilitaryTime(finishTime, am);
     }
+
+    public String AMPMConverter(int time) {
+        String result;
+        if (time > 12) {
+            time = time - 12;
+            result = String.valueOf(time) + " pm";
+        } else {
+            result = String.valueOf(time) + " am";
+        }
+
+        return result;
+    }
+
+    public String startConverted() {
+        return AMPMConverter(startTime);
+    }
+
+    public String finishConverted() {
+        return AMPMConverter(finishTime);
+    }
+
 }
