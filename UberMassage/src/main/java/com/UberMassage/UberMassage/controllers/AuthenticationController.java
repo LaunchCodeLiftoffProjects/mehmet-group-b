@@ -2,6 +2,7 @@ package com.UberMassage.UberMassage.controllers;
 
 import com.UberMassage.UberMassage.data.TherapistRepository;
 import com.UberMassage.UberMassage.data.UserRepository;
+import com.UberMassage.UberMassage.models.Appointment;
 import com.UberMassage.UberMassage.models.Therapist;
 import com.UberMassage.UberMassage.models.User;
 import com.UberMassage.UberMassage.models.dto.LoginFormDTO;
@@ -85,11 +86,18 @@ public class AuthenticationController {
             return "register";
         }
 
+        Appointment newAppointment = new Appointment();
+
+
+
         User newUser = new User(registerFormDTO.getUsername(),
                 registerFormDTO.getPassword(), registerFormDTO.getFirstName()
                 , registerFormDTO.getLastName(), registerFormDTO.getState(),
                 registerFormDTO.getCity(), registerFormDTO.getEmail(),
                 registerFormDTO.getPhoneNumber());
+
+        newUser.setAppointment(newAppointment);
+        newUser.setTest(1);
         userRepository.save(newUser);
         setUserInSession(request.getSession(), newUser);
 

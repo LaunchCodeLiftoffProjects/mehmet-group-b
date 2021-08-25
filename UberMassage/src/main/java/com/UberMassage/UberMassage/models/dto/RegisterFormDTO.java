@@ -1,5 +1,7 @@
 package com.UberMassage.UberMassage.models.dto;
 
+import com.UberMassage.UberMassage.models.Appointment;
+
 public class RegisterFormDTO extends LoginFormDTO{
 
     private String verifyPassword;
@@ -12,6 +14,10 @@ public class RegisterFormDTO extends LoginFormDTO{
 
     private String state;
     private String city;
+
+    private Appointment appointment;
+
+    private int test = 1;
 
     public String getVerifyPassword() {
         return verifyPassword;
@@ -67,5 +73,22 @@ public class RegisterFormDTO extends LoginFormDTO{
 
     public void setCity(String city) {
         this.city = city;
+    }
+
+    public Appointment getAppointment() {
+        return appointment;
+    }
+
+    public void setAppointment(
+            Appointment appointment) {
+        this.appointment = appointment;
+    }
+
+    public int getTest() {
+        return test;
+    }
+
+    public void setTest(int test) {
+        this.test = test;
     }
 }

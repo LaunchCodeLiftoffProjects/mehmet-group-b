@@ -18,7 +18,9 @@ public class Therapist {
 
     private double costOfService;
 
-    private String appointment;
+    @OneToOne(cascade= CascadeType.ALL)
+    @JoinColumn(name = "appointment_id")
+    private Appointment appointment;
 
     private Hours hoursOfOperation;
 
@@ -68,11 +70,11 @@ public class Therapist {
         this.costOfService = costOfService;
     }
 
-    public String getAppointment() {
+    public Appointment getAppointment() {
         return appointment;
     }
 
-    public void setAppointment(String appointment) {
+    public void setAppointment(Appointment appointment) {
         this.appointment = appointment;
     }
 

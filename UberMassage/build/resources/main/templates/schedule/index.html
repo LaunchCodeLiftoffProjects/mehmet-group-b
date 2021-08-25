@@ -20,6 +20,11 @@
                 <th:block th:if="${user.therapist} != null">
                 <tr>
                     <td th:text="${user.firstName}"></td>
+                    <td>
+                        <button type="button" th:onclick="${user.lucas}"
+                                >I am the Law</button>
+                    </td>
+                    <td th:text="${user.test}"></td>
                 </tr>
                 </th:block>
             </th:block>

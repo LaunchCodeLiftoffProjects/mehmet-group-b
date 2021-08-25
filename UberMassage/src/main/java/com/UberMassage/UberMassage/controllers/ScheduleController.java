@@ -9,8 +9,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("schedule")
@@ -19,14 +22,35 @@ public class ScheduleController {
     @Autowired
     UserRepository userRepository;
 
+    private static final String userSessionKey = "user";
+
+    public User getUserFromSession(HttpSession session) {
+        Integer userId = (Integer) session.getAttribute(userSessionKey);
+        if (userId == null) {
+            return null;
+        }
+
+        Optional<User> user = userRepository.findById(userId);
+
+        if (user.isEmpty()) {
+            return null;
+        }
+
+        return user.get();
+    }
+
     @GetMapping("")
-    public String displaySchedule(Model model) {
+    public String displaySchedule(Model model, HttpServletRequest request,
+                                  HttpSession session) {
 
 
-        User newUser = new User();
+        User theUser = getUserFromSession(request.getSession());
 
         model.addAttribute("title", "This is schedule");
         model.addAttribute("users", userRepository.findAll());
+
+
+        System.out.println(theUser.getTest());
 
         return "schedule/index";
     }
