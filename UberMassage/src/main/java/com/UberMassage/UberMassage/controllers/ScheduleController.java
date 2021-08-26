@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -49,6 +51,24 @@ public class ScheduleController {
         model.addAttribute("title", "This is schedule");
         model.addAttribute("users", userRepository.findAll());
 
+
+        System.out.println(theUser.getTest());
+
+        return "schedule/index";
+    }
+
+    @PostMapping("")
+    public String handleButton(HttpServletRequest request, Model model,
+                               @RequestParam String action) {
+        User theUser = getUserFromSession(request.getSession());
+        model.addAttribute("title", "This is schedule");
+        model.addAttribute("users", userRepository.findAll());
+
+        System.out.println(action);
+
+        if(action.equals("test")) {
+            theUser.lucas();
+        }
 
         System.out.println(theUser.getTest());
 
