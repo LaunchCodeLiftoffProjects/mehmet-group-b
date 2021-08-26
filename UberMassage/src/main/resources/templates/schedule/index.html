@@ -16,8 +16,8 @@
         <th:block>
             <tr th:each="therapist: ${therapists}">
                 <td th:text = "${therapist.firstName}">
-
                 </td>
+                <td th:text="${therapist.therapist.hoursOfOperation.finishTime}"></td>
             </tr>
         </th:block>
         </thead>
