@@ -8,6 +8,7 @@ public class Therapist {
 
     @OneToOne (mappedBy = "therapist")
     private User user;
+
     @Id
     @GeneratedValue
     private int therapistId;
@@ -18,11 +19,14 @@ public class Therapist {
 
     private double costOfService;
 
-    private String appointment;
+    @OneToOne(mappedBy = "therapist")
+    private Appointment appointment;
 
     private Hours hoursOfOperation;
 
     private Gender gender;
+
+
 
     public Therapist() {
 
@@ -68,11 +72,11 @@ public class Therapist {
         this.costOfService = costOfService;
     }
 
-    public String getAppointment() {
+    public Appointment getAppointment() {
         return appointment;
     }
 
-    public void setAppointment(String appointment) {
+    public void setAppointment(Appointment appointment) {
         this.appointment = appointment;
     }
 

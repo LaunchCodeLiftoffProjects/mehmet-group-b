@@ -13,6 +13,13 @@
             <th>Category</th>
             <th></th>
         </tr>
+        <th:block>
+            <tr th:each="therapist: ${therapists}">
+                <td th:text = "${therapist.firstName}">
+
+                </td>
+            </tr>
+        </th:block>
         </thead>
         <tbody>
 

@@ -14,6 +14,8 @@ public class User extends AbstractEntity {
     @JoinColumn(name = "therapist_id")
     private Therapist therapist;
 
+    @OneToOne(mappedBy = "user")
+    private Appointment appointment;
 
 
     public User() {
@@ -32,5 +34,13 @@ public class User extends AbstractEntity {
 
     public void setTherapist(Therapist therapist) {
         this.therapist = therapist;
+    }
+
+    public Appointment getAppointment() {
+        return appointment;
+    }
+
+    public void setAppointment(Appointment appointment) {
+        this.appointment = appointment;
     }
 }
