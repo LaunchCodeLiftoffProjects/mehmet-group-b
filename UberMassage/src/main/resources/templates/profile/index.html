@@ -42,7 +42,11 @@
 </div>
 
 <h2>Appointment?</h2>
-<p th:text="${user.appointment.youHaveAppointment()}"></p>
+
+<div th:if="${user.appointment} != null">
+    <p th:text="${user.appointment.getTherapist().getFirstName()}"></p>
+</div>
+
 
 
 </body>

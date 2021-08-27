@@ -15,15 +15,17 @@
         </tr>
         </thead>
         <tbody>
-        <form action="#" th:action="@{/schedule}" method="post">
+
+        <form method="post">
             <th:block th:each="user : ${users}">
                 <th:block th:if="${user.therapist} != null">
                 <tr>
                     <td th:text="${user.firstName}"></td>
                     <td>
                         <button type="submit"
-                                name="action"
-                        th:value="test" th:text="test">
+                                name="therapistId"
+                        th:value="${user.id}" th:text="test">
+
                         </button>
                     </td>
 

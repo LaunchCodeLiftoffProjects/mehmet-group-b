@@ -86,9 +86,6 @@ public class AuthenticationController {
             return "register";
         }
 
-        Appointment newAppointment = new Appointment();
-
-
 
         User newUser = new User(registerFormDTO.getUsername(),
                 registerFormDTO.getPassword(), registerFormDTO.getFirstName()
@@ -96,7 +93,7 @@ public class AuthenticationController {
                 registerFormDTO.getCity(), registerFormDTO.getEmail(),
                 registerFormDTO.getPhoneNumber());
 
-        newUser.setAppointment(newAppointment);
+
         newUser.setTest(1);
         userRepository.save(newUser);
         setUserInSession(request.getSession(), newUser);

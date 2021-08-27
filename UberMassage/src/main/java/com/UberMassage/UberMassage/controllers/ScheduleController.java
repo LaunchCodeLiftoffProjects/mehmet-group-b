@@ -1,18 +1,19 @@
 package com.UberMassage.UberMassage.controllers;
 
+import com.UberMassage.UberMassage.data.AppointmentRepository;
 import com.UberMassage.UberMassage.data.UserRepository;
+import com.UberMassage.UberMassage.models.Appointment;
 import com.UberMassage.UberMassage.models.Therapist;
 import com.UberMassage.UberMassage.models.User;
+import com.UberMassage.UberMassage.models.dto.AppointmentDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -23,6 +24,9 @@ public class ScheduleController {
 
     @Autowired
     UserRepository userRepository;
+
+    @Autowired
+    AppointmentRepository appointmentRepository;
 
     private static final String userSessionKey = "user";
 
@@ -42,35 +46,39 @@ public class ScheduleController {
     }
 
     @GetMapping("")
-    public String displaySchedule(Model model, HttpServletRequest request,
-                                  HttpSession session) {
+    public String displaySchedule(Model model, HttpServletRequest request) {
 
 
         User theUser = getUserFromSession(request.getSession());
 
         model.addAttribute("title", "This is schedule");
+        model.addAttribute("user", theUser);
         model.addAttribute("users", userRepository.findAll());
 
-
-        System.out.println(theUser.getTest());
 
         return "schedule/index";
     }
 
     @PostMapping("")
-    public String handleButton(HttpServletRequest request, Model model,
-                               @RequestParam String action) {
+    public String handleButton(HttpServletRequest request,
+                               @RequestParam int therapistId,
+                               Model model) {
         User theUser = getUserFromSession(request.getSession());
         model.addAttribute("title", "This is schedule");
         model.addAttribute("users", userRepository.findAll());
 
-        System.out.println(action);
+        User therapist = userRepository.findById(therapistId).orElse(new User());
 
-        if(action.equals("test")) {
-            theUser.lucas();
-        }
+        Appointment newAppointment = new Appointment(therapist,
+                    theUser);
 
-        System.out.println(theUser.getTest());
+        theUser.setAppointment(newAppointment);
+        therapist.setAppointment(newAppointment);
+
+        appointmentRepository.save(newAppointment);
+
+        userRepository.save(theUser);
+        userRepository.save(therapist);
 
         return "schedule/index";
     }

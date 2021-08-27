@@ -57,7 +57,7 @@ public class User extends AbstractEntity {
     }
 
     public void lucas() {
-        this.test += 9;
-        System.out.println(this.getTest());
+        this.appointment.getClient().getFirstName();
+        this.appointment.getTherapist().getFirstName();
     }
 }
