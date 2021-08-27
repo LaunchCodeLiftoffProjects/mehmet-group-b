@@ -22,7 +22,7 @@
     <div class="form-group">
         <label>Hours of Operation Start time
             <input type="number" th:name="startTime">
-            AM?:
+            <label>Is it AM?</label>
             <input type="checkbox" th:name="isStartAM"
                    th:checked="${am1}">
         </label>
@@ -32,7 +32,7 @@
     <div class="form-group">
         <label>Hours of Operation Finish time
             <input type="number" th:name="finishTime">
-            AM?:
+            <label>Is it AM?</label>
             <input type="checkbox" th:name="isFinishAM"
                    th:checked="${am2}">
         </label>

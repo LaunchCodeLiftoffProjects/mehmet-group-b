@@ -1,47 +1,47 @@
 package com.UberMassage.UberMassage.models;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import java.util.Optional;
 
 @Entity
-public class Appointment {
-
-    @Id
-    @GeneratedValue
-    private int id;
+public class Appointment extends AbstractID {
 
     @OneToOne
-    private Therapist therapist;
-    @OneToOne
-    private User user;
+    User therapist;
 
-    public Appointment(){};
-    public Appointment (Therapist therapist, User user){
+    @OneToOne
+    User client;
+
+    public Appointment() {};
+
+    public Appointment(User therapist, User client) {
         this.therapist = therapist;
-        this.user = user;
+        this.client = client;
     }
 
-
-
-    public int getId() {
-        return id;
+    public String youHaveAppointment() {
+        return "The appointment";
     }
 
-    public Therapist getTherapist() {
+    public User getTherapist() {
         return therapist;
     }
 
-    public void setTherapist(Therapist therapist) {
+    public void setTherapist(User therapist) {
         this.therapist = therapist;
     }
 
-    public User getUser() {
-        return user;
+    public void lucasLawrence() {
+        this.client.getFirstName();
+        this.therapist.getFirstName();
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public User getClient() {
+        return client;
+    }
+
+    public void setClient(User client) {
+        this.client = client;
     }
 }

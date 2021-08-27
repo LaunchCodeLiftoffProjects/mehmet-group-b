@@ -1,25 +1,26 @@
 package com.UberMassage.UberMassage.models.dto;
 
-import com.UberMassage.UberMassage.models.Therapist;
 import com.UberMassage.UberMassage.models.User;
 
 public class AppointmentDTO {
-private Therapist therapist;
-private User user;
 
-    public Therapist getTherapist() {
+    private User therapist;
+
+    private User client;
+
+    public User getTherapist() {
         return therapist;
     }
 
-    public void setTherapist(Therapist therapist) {
+    public void setTherapist(User therapist) {
         this.therapist = therapist;
     }
 
-    public User getUser() {
-        return user;
+    public User getClient() {
+        return client;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setClient(User client) {
+        this.client = client;
     }
 }

@@ -29,6 +29,24 @@
         </thead>
         <tbody>
 
+        <form method="post">
+            <th:block th:each="user : ${users}">
+                <th:block th:if="${user.therapist} != null">
+                <tr>
+                    <td th:text="${user.firstName}"></td>
+                    <td>
+                        <button type="submit"
+                                name="therapistId"
+                        th:value="${user.id}" th:text="test">
+
+                        </button>
+                    </td>
+
+                    <td th:text="${user.test}"></td>
+                </tr>
+                </th:block>
+            </th:block>
+        </form>
         </tbody>
     </table>
 </div>

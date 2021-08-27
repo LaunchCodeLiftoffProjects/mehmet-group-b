@@ -33,13 +33,20 @@
 </div>
 
 
-<!--<div th:unless="${user.therapist} != null">-->
+<div th:unless="${user.therapist} != null">
     <br>
     <br>
     <h2>Are you a therapist? Sign up now to provide services.</h2>
     <a th:href="@{/therapistsignup/}">
         Yes</a>
-<!--</div>-->
+</div>
+
+<h2>Appointment?</h2>
+
+<div th:if="${user.appointment} != null">
+    <p th:text="${user.appointment.getTherapist().getFirstName()}"></p>
+</div>
+
 
 
 </body>

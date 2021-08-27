@@ -8,7 +8,6 @@ public class Therapist {
 
     @OneToOne (mappedBy = "therapist")
     private User user;
-
     @Id
     @GeneratedValue
     private int therapistId;
@@ -19,14 +18,13 @@ public class Therapist {
 
     private double costOfService;
 
-    @OneToOne(mappedBy = "therapist")
+    @OneToOne(cascade= CascadeType.ALL)
+    @JoinColumn(name = "appointment_id")
     private Appointment appointment;
 
     private Hours hoursOfOperation;
 
     private Gender gender;
-
-
 
     public Therapist() {
 

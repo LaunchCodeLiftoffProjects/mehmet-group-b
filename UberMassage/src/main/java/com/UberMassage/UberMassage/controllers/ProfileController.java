@@ -45,7 +45,7 @@ public class ProfileController {
     public String anotherOne(@ModelAttribute @Valid LoginFormDTO loginFormDTO,
                              Errors errors, HttpServletRequest request,
                              Model model) {
-        
+
         User theUser = getUserFromSession(request.getSession());
 
         System.out.println(theUser.getId());
