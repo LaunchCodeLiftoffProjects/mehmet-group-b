@@ -17,7 +17,13 @@
             <tr th:each="therapist: ${therapists}">
                 <td th:text = "${therapist.firstName}">
                 </td>
-                <td th:text="${therapist.therapist.hoursOfOperation.finishTime}"></td>
+                <td th:text="${therapist.therapist.user.firstName}"></td>
+                <td>
+                    <form>
+                    <button type="submit" th:value="${user}"></button>
+
+                    </form>
+                </td>
             </tr>
         </th:block>
         </thead>

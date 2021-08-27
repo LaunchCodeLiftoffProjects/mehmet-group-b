@@ -18,17 +18,17 @@ public class Appointment {
     private User user;
 
     public Appointment(){};
-//    public Appointment (Therapist therapist, User user){
-//        this.therapist = therapist;
-//        this.user = user;
-//    }
+    public Appointment (Therapist therapist, User user){
+        this.therapist = therapist;
+        this.user = user;
+    }
 
 
 
-//    public int getId() {
-//        return id;
-//    }
-//
+    public int getId() {
+        return id;
+    }
+
     public Therapist getTherapist() {
         return therapist;
     }
