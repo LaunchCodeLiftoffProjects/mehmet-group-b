@@ -35,6 +35,11 @@
                     <a class="nav-link" th:href="@{/}">
                         Home</a>
                 </li>
+                <li class="nav-item" th:if="${user != null}">
+                    <a class="nav-link"
+                       th:href="@{/logout}">
+                        Logout</a>
+                </li>
             </ul>
 
         </nav>
