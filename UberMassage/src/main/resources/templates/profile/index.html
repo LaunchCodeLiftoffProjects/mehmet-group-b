@@ -5,35 +5,35 @@
 <header th:replace="fragments::header"></header>
 
 <h2>First name</h2>
-<p th:text="${user.firstName}"></p>
+<p th:text="${client.firstName}"></p>
 <h2>Last name</h2>
-<p th:text="${user.lastName}"></p>
+<p th:text="${client.lastName}"></p>
 <h2>Email</h2>
-<p th:text="${user.email}"></p>
+<p th:text="${client.email}"></p>
 <h2>State</h2>
-<p th:text="${user.state}"></p>
+<p th:text="${client.state}"></p>
 <h2>City</h2>
-<p th:text="${user.city}"></p>
+<p th:text="${client.city}"></p>
 <h2>phone number</h2>
-<p th:text="${user.phoneNumber}"></p>
+<p th:text="${client.phoneNumber}"></p>
 <h2>Username</h2>
-<p th:text="${user.username}"></p>
+<p th:text="${client.username}"></p>
 
-<div th:if="${user.therapist} != null">
+<div th:if="${client.therapist} != null">
     <br>
     <br>
     <h2>Your Gender</h2>
-    <p th:text="${user.therapist.gender}"></p>
+    <p th:text="${client.therapist.gender}"></p>
     <h2>Your Hours</h2>
-    <p th:text="${user.therapist.hoursOfOperation.startConverted()}"></p>
+    <p th:text="${client.therapist.hoursOfOperation.startConverted()}"></p>
     <h2>Your Stop Time</h2>
     <p
-            th:text="${user.therapist.hoursOfOperation.finishConverted}"></p>
+            th:text="${client.therapist.hoursOfOperation.finishConverted}"></p>
 
 </div>
 
 
-<div th:unless="${user.therapist} != null">
+<div th:unless="${client.therapist} != null">
     <br>
     <br>
     <h2>Are you a therapist? Sign up now to provide services.</h2>
@@ -43,8 +43,8 @@
 
 <h2>Appointment?</h2>
 
-<div th:if="${user.appointment} != null">
-    <p th:text="${user.appointment.getTherapist().getFirstName()}"></p>
+<div th:if="${client.appointment} != null">
+    <p th:text="${client.appointment.getTherapist().getFirstName()}"></p>
 </div>
 
 

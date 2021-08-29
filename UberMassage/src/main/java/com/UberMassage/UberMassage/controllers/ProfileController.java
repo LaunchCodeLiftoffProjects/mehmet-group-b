@@ -32,7 +32,7 @@ public class ProfileController {
         Optional optUser = userRepository.findById(userId);
         if (optUser.isPresent()) {
             User user = (User) optUser.get();
-            model.addAttribute("user", user);
+            model.addAttribute("client", user);
             return "profile/index";
 
         } else {
@@ -54,7 +54,7 @@ public class ProfileController {
 
     }
 
-    private static final String userSessionKey = "user";
+    private static final String userSessionKey = "client";
 
     public User getUserFromSession(HttpSession session) {
         Integer userId = (Integer) session.getAttribute(userSessionKey);

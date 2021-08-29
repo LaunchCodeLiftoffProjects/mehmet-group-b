@@ -28,7 +28,7 @@ public class ScheduleController {
     @Autowired
     AppointmentRepository appointmentRepository;
 
-    private static final String userSessionKey = "user";
+    private static final String userSessionKey = "client";
 
     public User getUserFromSession(HttpSession session) {
         Integer userId = (Integer) session.getAttribute(userSessionKey);
