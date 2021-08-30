@@ -28,18 +28,27 @@
     </div>
     <div class="form-group">
         <label>State
-            <input class="form-control"
-                   th:field="${registerFormDTO.state}" />
+            <select th:field="${registerFormDTO.state}">
+                <option th:each=" state: ${states}"
+                        th:value="${state}"
+                        th:text="${state}">
+
+                </option>
+            </select>
         </label>
-        <p class="error" th:errors="${registerFormDTO.state}"></p>
     </div>
+
     <div class="form-group">
         <label>City
-            <input class="form-control"
-                   th:field="${registerFormDTO.city}" />
-        </label>
-        <p class="error" th:errors="${registerFormDTO.city}"></p>
+            <select th:field="${registerFormDTO.city}">
+                <option th:each="city: ${cities}"
+                        th:value="${city}"
+                        th:text="${city}">
+
+                </option>
+            </select>
     </div>
+
     <div class="form-group">
         <label>Email
             <input class="form-control"
