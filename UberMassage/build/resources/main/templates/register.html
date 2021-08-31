@@ -30,16 +30,22 @@
         <label>State
             <select th:field="${registerFormDTO.state}">
                 <option th:each=" state: ${states}"
-                        th:value="${state}"
-                        th:text="${state}">
+                        th:value="${state}">
+<!--                        th:text="${state}">-->
+
+                        <a href="https://www.youtube.com/watch?v=p5g40IwdSgg&ab_channel=EvantheUsurper" th:text="${state}"></a>
 
                 </option>
             </select>
         </label>
     </div>
 
+    <div>
+        <a th:each="state: ${states}" th:href="@{/register(stateId=34)}" th:text="${state}"></a>
+    </div>
+
     <div class="form-group">
-        <label>City
+        <label>City</label>
             <select th:field="${registerFormDTO.city}">
                 <option th:each="city: ${cities}"
                         th:value="${city}"

@@ -51,55 +51,36 @@ public class HomeController {
         model.addAttribute("title", "Hello World");
         model.addAttribute("user", theUser);
 
-//        City Bloomington = new City("Bloomington");
-//        City ChampaignUrbana = new City("Champaign Urbana");
-//        City Chicago = new City("Chicago");
-//        City Decatur = new City("Decatur");
-//        City LsSalleCo = new City("La Salle Co");
-//        City Charleston = new City("Mattoon-Charleston");
-//        City Peoria = new City("Peoria");
-//        City QuadCities = new City("Quad Cities");
-//        City Rockford = new City("Rockford");
-//        City SouthernIL = new City("Southern IL");
+//        City Columbia = new City("Columbia");
+//        City Joplin = new City("Joplin");
+//        City KansasCity = new City("Kansas City");
+//        City Kirksville = new City("Kirksville");
+//        City LakeOfTheOzarks= new City("Lake of the Ozarks");
+//        City SoutheastMO = new City("Southeast MO");
 //        City Springfield = new City("Springfield");
+//        City StJoseph = new City("St. Joseph");
 //        City StLouis = new City("St. Louis");
-//        City WesternIl = new City("Western IL");
-
-        //        cityRepository.save(Bloomington);
-//        cityRepository.save(ChampaignUrbana);
-//        cityRepository.save(Chicago);
-//        cityRepository.save(Decatur);
-//        cityRepository.save(LsSalleCo);
-//        cityRepository.save(Charleston);
-//        cityRepository.save(Peoria);
-//        cityRepository.save(QuadCities);
-//        cityRepository.save(Rockford);
-//        cityRepository.save(SouthernIL);
+//
+//
+//        cityRepository.save(Columbia);
+//        cityRepository.save(Joplin);
+//        cityRepository.save(KansasCity);
+//        cityRepository.save(Kirksville);
+//        cityRepository.save(LakeOfTheOzarks);
+//        cityRepository.save(SoutheastMO);
 //        cityRepository.save(Springfield);
+//        cityRepository.save(StJoseph);
 //        cityRepository.save(StLouis);
-//        cityRepository.save(WesternIl);
-//        cities.add(Bloomington);
-//        cities.add(ChampaignUrbana);
-//        cities.add(Chicago);
-//        cities.add(Decatur);
-//        cities.add(LsSalleCo);
-//        cities.add(Charleston);
-//        cities.add(Peoria);
-//        cities.add(QuadCities);
-//        cities.add(Rockford);
-//        cities.add(SouthernIL);
-//        cities.add(Springfield);
-//        cities.add(StLouis);
-//        cities.add(WesternIl);
 
-
-//        Optional<City> cityresult = cityRepository.findById(28);
+//    for (int i = 36; i < 45; i++) {
+//        Optional<City> cityresult = cityRepository.findById(i);
 //        City acity = cityresult.get();
-//        Optional<State> stateresult = stateRepository.findById(34);
+//        Optional<State> stateresult = stateRepository.findById(35);
 //        State astate = stateresult.get();
+//
 //        acity.setState(astate);
 //        cityRepository.save(acity);
-
+//    }
 
         return "index";
     }
