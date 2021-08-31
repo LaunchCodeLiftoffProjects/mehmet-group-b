@@ -22,18 +22,23 @@
                     <a class="nav-link" th:href="@{/schedule}">
                         Schedule</a>
                 </li>
-                <li class="nav-item" th:if="${user != null}">
+                <li class="nav-item" th:if="${client} != null">
                     <a class="nav-link"
                        th:href="@{/profile}">
                         Profile</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" th:if="${client} == null">
                     <a class="nav-link" th:href="@{/login}">
                         Login</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" th:href="@{/}">
                         Home</a>
+                </li>
+                <li class="nav-item" th:if="${client} != null">
+                    <a class="nav-link"
+                       th:href="@{/logout}">
+                        Logout</a>
                 </li>
             </ul>
 

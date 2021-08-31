@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.util.*;
+import java.util.Optional;
 
 @Controller
 public class HomeController {
@@ -27,7 +27,7 @@ public class HomeController {
     @Autowired
     CityRepository cityRepository;
 
-    private static final String userSessionKey = "user";
+    private static final String userSessionKey = "client";
 
     public User getUserFromSession(HttpSession session) {
         Integer userId = (Integer) session.getAttribute(userSessionKey);
@@ -45,42 +45,13 @@ public class HomeController {
     }
 
     @GetMapping("")
-    public String displayHomepage(@ModelAttribute State newState,Model model, HttpServletRequest request) {
+    public String displayHomepage(Model model, HttpServletRequest request) {
         User theUser = getUserFromSession(request.getSession());
 
         model.addAttribute("title", "Hello World");
-        model.addAttribute("user", theUser);
+        model.addAttribute("client", theUser);
 
-//        City Columbia = new City("Columbia");
-//        City Joplin = new City("Joplin");
-//        City KansasCity = new City("Kansas City");
-//        City Kirksville = new City("Kirksville");
-//        City LakeOfTheOzarks= new City("Lake of the Ozarks");
-//        City SoutheastMO = new City("Southeast MO");
-//        City Springfield = new City("Springfield");
-//        City StJoseph = new City("St. Joseph");
-//        City StLouis = new City("St. Louis");
-//
-//
-//        cityRepository.save(Columbia);
-//        cityRepository.save(Joplin);
-//        cityRepository.save(KansasCity);
-//        cityRepository.save(Kirksville);
-//        cityRepository.save(LakeOfTheOzarks);
-//        cityRepository.save(SoutheastMO);
-//        cityRepository.save(Springfield);
-//        cityRepository.save(StJoseph);
-//        cityRepository.save(StLouis);
 
-//    for (int i = 36; i < 45; i++) {
-//        Optional<City> cityresult = cityRepository.findById(i);
-//        City acity = cityresult.get();
-//        Optional<State> stateresult = stateRepository.findById(35);
-//        State astate = stateresult.get();
-//
-//        acity.setState(astate);
-//        cityRepository.save(acity);
-//    }
 
         return "index";
     }

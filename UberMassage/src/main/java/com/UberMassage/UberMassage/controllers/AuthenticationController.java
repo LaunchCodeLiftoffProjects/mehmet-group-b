@@ -4,7 +4,9 @@ import com.UberMassage.UberMassage.data.CityRepository;
 import com.UberMassage.UberMassage.data.StateRepository;
 import com.UberMassage.UberMassage.data.TherapistRepository;
 import com.UberMassage.UberMassage.data.UserRepository;
-import com.UberMassage.UberMassage.models.*;
+import com.UberMassage.UberMassage.models.Appointment;
+import com.UberMassage.UberMassage.models.Therapist;
+import com.UberMassage.UberMassage.models.User;
 import com.UberMassage.UberMassage.models.dto.LoginFormDTO;
 import com.UberMassage.UberMassage.models.dto.RegisterFormDTO;
 import com.UberMassage.UberMassage.models.dto.TherapistRegisterFormDTO;
@@ -12,7 +14,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -36,6 +41,7 @@ public class AuthenticationController {
     CityRepository cityRepository;
 
     private static final String userSessionKey = "user";
+    private static final String userSessionKey = "client";
 
     public User getUserFromSession(HttpSession session) {
         Integer userId = (Integer) session.getAttribute(userSessionKey);
