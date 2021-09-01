@@ -4,53 +4,77 @@
 <body>
 <header th:replace="fragments::header"></header>
 
+
+<div> <!-- search filter-->
+    <form method="get">
+    <input type="text" name="searchParam">
+        <th:block th:each="state:${states}">
+
+        <input type="radio" th:name="searchState" th:value="${state.state}">
+        <label th:text="${state.state}"></label>
+            </th:block>
+
+            <th:block th:if="${searchState} != null">
+                <p>CHumps</p>
+        </th:block>
+    <button type="submit">Filter</button>
+    </form>
+
+</div>
 <div>
     <table class="table table-bordered">
         <thead class="thead-dark">
         <tr>
-            <th>ID</th>
             <th>Name</th>
-            <th>Category</th>
-            <th></th>
+            <th>Location</th>
+            <th>Schedule</th>
+<!--            <th>Category</th>-->
+<!--            <th></th>-->
         </tr>
-        <th:block>
-            <tr th:each="therapist: ${therapists}">
-                <td th:text = "${therapist.firstName}">
-                </td>
-                <td th:text="${therapist.therapist.user.firstName}"></td>
-                <td>
-                    <form>
-                    <button type="submit" th:value="${user}"></button>
+<!--        <th:block>-->
+<!--            <tr th:each="therapist: ${therapists}">-->
+<!--                <td th:text = "${therapist.firstName}">-->
+<!--                </td>-->
+<!--                <td th:text="${therapist.therapist.user.firstName}"></td>-->
+<!--                <td th:text="${therapist.therapist.user.lastName}"></td>-->
+<!--                <td>-->
+<!--                    <form>-->
+<!--                    <button type="submit" th:value="${user}"></button>-->
 
-                    </form>
-                </td>
-            </tr>
-        </th:block>
+<!--                    </form>-->
+<!--                </td>-->
+<!--            </tr>-->
+<!--        </th:block>-->
         </thead>
         <tbody>
 
+<!--        list if client is not logged in-->
         <th:block th:if="${client} == null">
         <form method="post">
             <th:block th:each="user : ${users}">
-                <th:block
+
+               <th:block
                         th:if="${user.therapist} != null">
                 <tr>
-                    <td th:text="${user.firstName}"></td>
+                    <td th:text="${user.firstName}+' '+${user.lastName}"></td>
+                    <td th:text="${user.city}+', '+${user.state}"></td>
                     <td>
                         <button type="submit"
                                 name="therapistId"
-                        th:value="${user.id}" th:text="test">
+                        th:value="${user.id}" th:text="'Login to Schedule'">
 
                         </button>
                     </td>
 
-                    <td th:text="${user.test}"></td>
+
                 </tr>
                 </th:block>
             </th:block>
         </form>
         </th:block>
 
+
+<!-- list if client is logged in-->
         <th:block th:unless="${client} == null">
             <form method="post">
                 <th:block th:each="user : ${users}">
@@ -61,12 +85,12 @@
                             <td>
                                 <button type="submit"
                                         name="therapistId"
-                                        th:value="${user.id}" th:text="test">
+                                        th:value="${user.id}" th:text="Schedule">
 
                                 </button>
                             </td>
 
-                            <td th:text="${user.test}"></td>
+<!--                            <td th:text="${user.test}"></td>-->
                         </tr>
                     </th:block>
                 </th:block>
