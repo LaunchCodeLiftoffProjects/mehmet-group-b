@@ -1,10 +1,10 @@
 package com.UberMassage.UberMassage.controllers;
 
 import com.UberMassage.UberMassage.data.AppointmentRepository;
+import com.UberMassage.UberMassage.data.CityRepository;
+import com.UberMassage.UberMassage.data.StateRepository;
 import com.UberMassage.UberMassage.data.UserRepository;
-import com.UberMassage.UberMassage.models.Appointment;
-import com.UberMassage.UberMassage.models.Therapist;
-import com.UberMassage.UberMassage.models.User;
+import com.UberMassage.UberMassage.models.*;
 import com.UberMassage.UberMassage.models.dto.AppointmentDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 
@@ -27,6 +28,10 @@ public class ScheduleController {
 
     @Autowired
     AppointmentRepository appointmentRepository;
+    @Autowired
+    StateRepository stateRepository;
+    @Autowired
+    CityRepository cityRepository;
 
     private static final String userSessionKey = "client";
 
@@ -46,14 +51,46 @@ public class ScheduleController {
     }
 
     @GetMapping("")
-    public String displaySchedule(Model model, HttpServletRequest request) {
+    public String displaySchedule(@RequestParam(required = false) String searchState,@RequestParam(required = false)String searchCity, Model model, HttpServletRequest request) {
 
 
         User theUser = getUserFromSession(request.getSession());
 
         model.addAttribute("title", "This is schedule");
         model.addAttribute("client", theUser);
-        model.addAttribute("users", userRepository.findAll());
+        model.addAttribute("states",stateRepository.findAll());
+        model.addAttribute("cities",cityRepository.findAll());
+        model.addAttribute("searchState",searchState);
+
+//        Search by state
+        if(searchState != null) {
+            ArrayList<User> usersByState = new ArrayList<User>() {};
+            Iterable<User> users = userRepository.findAll();
+            for (User user:users) {
+                if (searchState.equals(user.getState())){
+                    usersByState.add(user);};
+            }
+
+
+            //search by city
+            if(searchCity != null){
+                ArrayList<User> usersByCity = new ArrayList<User>();
+                for (User user:usersByState
+                     ) {
+                    if(searchCity.equals(user.getCity())){
+                        usersByCity.add(user);
+                        model.addAttribute("users",usersByCity);
+                    }
+                }
+            } else {
+            model.addAttribute("users", usersByState);
+            }
+        }
+        else {
+            model.addAttribute("users",userRepository.findAll());
+        }
+
+
 
 
         return "schedule/index";

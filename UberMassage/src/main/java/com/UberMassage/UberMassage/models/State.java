@@ -36,7 +36,7 @@ public class State {
         this.id = id;
     }
 
-    public void setState(String state) {
+    public void setStateName(String state) {
         this.state = state;
     }
 
