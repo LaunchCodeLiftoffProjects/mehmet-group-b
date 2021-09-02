@@ -15,9 +15,15 @@
             </th:block>
 
             <th:block th:if="${searchState} != null">
-                <th:block th:each="city: ${cities}">
-                    <input type="radio" th:name="searchCity" th:value="${city.city}">
+                <th:block>
+                    <select th:name="searchCity">
+                        <option th:each="city: ${cities}"
+                                th:value="${city.city}"
+                                >
+
                     <label th:text="${city.city}"></label>
+                        </option>
+                    </select>
                 </th:block>
         </th:block>
     <button type="submit">Filter</button>

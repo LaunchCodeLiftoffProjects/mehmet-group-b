@@ -59,7 +59,6 @@ public class ScheduleController {
         model.addAttribute("title", "This is schedule");
         model.addAttribute("client", theUser);
         model.addAttribute("states",stateRepository.findAll());
-        model.addAttribute("cities",cityRepository.findAll());
         model.addAttribute("searchState",searchState);
 
 //        Search by state
@@ -70,6 +69,21 @@ public class ScheduleController {
                 if (searchState.equals(user.getState())){
                     usersByState.add(user);};
             }
+
+            //gets cities by selected state filter
+            State selectedStateFilter = new State();
+            for (State state:stateRepository.findAll()
+                 ) {
+                if(searchState.equals(state.getState())){
+                     selectedStateFilter = state;
+                }
+            }
+            ArrayList <City> citiesFromSelectedState = new ArrayList<City>();
+            for (City city: selectedStateFilter.getCities()
+                 ) {
+                citiesFromSelectedState.add(city);
+            }
+            model.addAttribute("cities",citiesFromSelectedState);
 
 
             //search by city
@@ -82,11 +96,12 @@ public class ScheduleController {
                         model.addAttribute("users",usersByCity);
                     }
                 }
-            } else {
+            }
+            else { //if no city
             model.addAttribute("users", usersByState);
             }
         }
-        else {
+        else { //if no state
             model.addAttribute("users",userRepository.findAll());
         }
 
