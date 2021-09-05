@@ -62,7 +62,13 @@ public class Hours {
 
     public String AMPMConverter(int time) {
         String result;
-        if (time > 12) {
+        if (time == 0) {
+            result = "12 am";
+        }
+        else if (time == 12) {
+            result = "12 pm";
+        }
+        else if (time > 12) {
             time = time - 12;
             result = String.valueOf(time) + " pm";
         } else {

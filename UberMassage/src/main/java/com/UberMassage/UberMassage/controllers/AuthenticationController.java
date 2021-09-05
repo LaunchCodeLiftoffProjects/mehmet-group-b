@@ -31,7 +31,7 @@ public class AuthenticationController {
     @Autowired
     TherapistRepository therapistRepository;
 
-    private static final String userSessionKey = "client";
+    private static final String userSessionKey = "user";
 
     public User getUserFromSession(HttpSession session) {
         Integer userId = (Integer) session.getAttribute(userSessionKey);

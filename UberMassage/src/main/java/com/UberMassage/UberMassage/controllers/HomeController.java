@@ -17,7 +17,7 @@ public class HomeController {
     @Autowired
     UserRepository userRepository;
 
-    private static final String userSessionKey = "client";
+    private static final String userSessionKey = "user";
 
     public User getUserFromSession(HttpSession session) {
         Integer userId = (Integer) session.getAttribute(userSessionKey);
@@ -39,7 +39,7 @@ public class HomeController {
         User theUser = getUserFromSession(request.getSession());
 
         model.addAttribute("title", "Hello World");
-        model.addAttribute("client", theUser);
+        model.addAttribute("user", theUser);
 
 
 

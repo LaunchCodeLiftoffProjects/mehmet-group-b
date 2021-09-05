@@ -16,48 +16,45 @@
         </thead>
         <tbody>
 
-        <th:block th:if="${client} == null">
+        <th:block th:if="${user} == null">
         <form method="post">
-            <th:block th:each="user : ${users}">
+            <th:block th:each="therapist : ${therapists}">
                 <th:block
-                        th:if="${user.therapist} != null">
+                        th:if="${therapist.therapist} != null">
                 <tr>
-                    <td th:text="${user.firstName}"></td>
+                    <td th:text="${therapist.firstName}"></td>
                     <td>
                         <button type="submit"
                                 name="therapistId"
-                        th:value="${user.id}" th:text="test">
+                        th:value="${therapist.id}" th:text="test">
 
                         </button>
                     </td>
 
-                    <td th:text="${user.test}"></td>
+                    <td th:text="${therapist.test}"></td>
                 </tr>
                 </th:block>
             </th:block>
         </form>
         </th:block>
 
-        <th:block th:unless="${client} == null">
-            <form method="post">
-                <th:block th:each="user : ${users}">
-                    <th:block
-                            th:if="${user.therapist} != null and ${user.id} != ${client.id}">
-                        <tr>
-                            <td th:text="${user.firstName}"></td>
-                            <td>
-                                <button type="submit"
-                                        name="therapistId"
-                                        th:value="${user.id}" th:text="test">
-
-                                </button>
-                            </td>
-
-                            <td th:text="${user.test}"></td>
-                        </tr>
-                    </th:block>
+        <th:block th:unless="${user} == null">
+            <th:block th:each="therapist : ${therapists}">
+                <th:block
+                        th:if="${therapist.therapist} != null and ${therapist.id} != ${user.id}">
+                    <tr>
+                        <td th:text="${therapist.firstName}"></td>
+                        <td>
+                            <button type="submit">
+                                <a
+                                        th:href="@{/appointmentform}"
+                                        th:text="'Schedule ' + ${therapist.firstName} + ' now!'">
+                                </a>
+                            </button>
+                        </td>
+                    </tr>
                 </th:block>
-            </form>
+            </th:block>
         </th:block>
         </tbody>
     </table>

@@ -32,7 +32,7 @@ public class ProfileController {
         Optional optUser = userRepository.findById(userId);
         if (optUser.isPresent()) {
             User user = (User) optUser.get();
-            model.addAttribute("client", user);
+            model.addAttribute("user", user);
             return "profile/index";
 
         } else {
@@ -48,13 +48,11 @@ public class ProfileController {
 
         User theUser = getUserFromSession(request.getSession());
 
-        System.out.println(theUser.getId());
-
         return "redirect:profile/" + theUser.getId() ;
 
     }
 
-    private static final String userSessionKey = "client";
+    private static final String userSessionKey = "user";
 
     public User getUserFromSession(HttpSession session) {
         Integer userId = (Integer) session.getAttribute(userSessionKey);
