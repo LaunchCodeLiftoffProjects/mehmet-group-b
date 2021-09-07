@@ -109,7 +109,9 @@
                     <th:block
                             th:if="${user.therapist} != null and ${user.id} != ${client.id}">
                         <tr>
-                            <td th:text="${user.firstName}"></td>
+                            <td th:text="${user.firstName}+' '+${user.lastName}"></td>
+                            <td th:text="${user.city}+', '+${user.state}"></td>
+
                             <td>
                                 <button type="submit"
                                         name="therapistId"
