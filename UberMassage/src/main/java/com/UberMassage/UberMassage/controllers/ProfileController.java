@@ -48,8 +48,6 @@ public class ProfileController {
 
         User theUser = getUserFromSession(request.getSession());
 
-        System.out.println(theUser.getId());
-
         return "redirect:profile/" + theUser.getId() ;
 
     }

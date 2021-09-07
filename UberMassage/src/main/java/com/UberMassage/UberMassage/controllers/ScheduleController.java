@@ -53,7 +53,7 @@ public class ScheduleController {
 
         model.addAttribute("title", "This is schedule");
         model.addAttribute("user", theUser);
-        model.addAttribute("users", userRepository.findAll());
+        model.addAttribute("therapists", userRepository.findAll());
 
 
         return "schedule/index";
@@ -65,7 +65,8 @@ public class ScheduleController {
                                Model model) {
         User theUser = getUserFromSession(request.getSession());
         model.addAttribute("title", "This is schedule");
-        model.addAttribute("users", userRepository.findAll());
+        model.addAttribute("therapists", userRepository.findAll());
+        model.addAttribute("user", theUser);
 
         User therapist = userRepository.findById(therapistId).orElse(new User());
 
