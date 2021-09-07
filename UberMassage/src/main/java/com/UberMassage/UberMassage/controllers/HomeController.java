@@ -22,10 +22,7 @@ public class HomeController {
     @Autowired
     UserRepository userRepository;
 
-<<<<<<<<< Temporary merge branch 1
-    private static final String userSessionKey = "client";
-=========
-    @Autowired
+     @Autowired
     StateRepository stateRepository;
     @Autowired
     CityRepository cityRepository;
