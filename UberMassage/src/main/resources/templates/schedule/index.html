@@ -7,7 +7,7 @@
 
 <div> <!-- search filter-->
     <form method="get">
-    <input type="text" name="searchParam">
+        <label>State: </label>
         <th:block th:each="state:${states}">
 
         <input type="radio"
@@ -22,8 +22,10 @@
                value="all"
                th:checked="${searchState == 'all'}">
         <label>All</label>
-
+    <br>
             <th:block th:if="${searchState} != null">
+            <label>City: </label>
+
                 <th:block>
                     <select th:name="searchCity">
                         </option>
@@ -41,6 +43,7 @@
                     </select>
                 </th:block>
         </th:block>
+
     <button type="submit">Filter</button>
     </form>
 
@@ -85,7 +88,8 @@
                     <td>
                         <button type="submit"
                                 name="therapistId"
-                        th:value="${user.id}" th:text="'Login to Schedule'">
+                                th:text="'Login to Schedule'"
+                                >
 
                         </button>
                     </td>
