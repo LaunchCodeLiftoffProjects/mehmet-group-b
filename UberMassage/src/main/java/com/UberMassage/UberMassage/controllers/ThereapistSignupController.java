@@ -21,7 +21,8 @@ import java.util.Optional;
 
 @Controller
 @RequestMapping("therapistsignup")
-public class ThereapistSignupController {
+public class
+ThereapistSignupController {
 
     @Autowired
     UserRepository userRepository;

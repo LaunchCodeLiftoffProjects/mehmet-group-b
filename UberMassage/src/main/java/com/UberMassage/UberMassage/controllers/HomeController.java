@@ -22,12 +22,15 @@ public class HomeController {
     @Autowired
     UserRepository userRepository;
 
+<<<<<<<<< Temporary merge branch 1
+    private static final String userSessionKey = "client";
+=========
     @Autowired
     StateRepository stateRepository;
     @Autowired
     CityRepository cityRepository;
 
-    private static final String userSessionKey = "user";
+    private static final String userSessionKey = "client";
 
     public User getUserFromSession(HttpSession session) {
         Integer userId = (Integer) session.getAttribute(userSessionKey);
@@ -49,7 +52,7 @@ public class HomeController {
         User theUser = getUserFromSession(request.getSession());
 
         model.addAttribute("title", "Hello World");
-        model.addAttribute("user", theUser);
+        model.addAttribute("client", theUser);
 
 //        City Columbia = new City("Columbia");
 //        City Joplin = new City("Joplin");

@@ -29,13 +29,16 @@ public class AuthenticationController {
     @Autowired
     TherapistRepository therapistRepository;
 
+<<<<<<<<< Temporary merge branch 1
+    private static final String userSessionKey = "client";
+=========
     @Autowired
     StateRepository stateRepository;
 
     @Autowired
     CityRepository cityRepository;
 
-    private static final String userSessionKey = "user";
+    private static final String userSessionKey = "client";
 
     public User getUserFromSession(HttpSession session) {
         Integer userId = (Integer) session.getAttribute(userSessionKey);
