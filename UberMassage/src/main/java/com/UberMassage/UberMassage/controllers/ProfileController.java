@@ -26,8 +26,10 @@ public class ProfileController {
     
 
     @GetMapping("/{userId}")
-    public String displayProfile(Model model, @PathVariable int userId) {
+    public String displayProfile(Model model, @PathVariable int userId, HttpServletRequest request) {
+        User theUser = getUserFromSession(request.getSession());
         model.addAttribute("title", "This is profile");
+        model.addAttribute("client",theUser);
 
         Optional optUser = userRepository.findById(userId);
         if (optUser.isPresent()) {
@@ -47,6 +49,7 @@ public class ProfileController {
                              Model model) {
 
         User theUser = getUserFromSession(request.getSession());
+        model.addAttribute("client",theUser);
 
         return "redirect:profile/" + theUser.getId() ;
 
