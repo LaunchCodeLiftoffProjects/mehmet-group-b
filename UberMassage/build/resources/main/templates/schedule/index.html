@@ -10,12 +10,36 @@
     <input type="text" name="searchParam">
         <th:block th:each="state:${states}">
 
-        <input type="radio" th:name="searchState" th:value="${state.state}">
+        <input type="radio"
+               th:name="searchState"
+               th:value="${state.state}"
+               th:checked="${state.state == searchState}">
         <label th:text="${state.state}"></label>
-            </th:block>
+        </th:block>
+
+        <input type="radio"
+               th:name="searchState"
+               value="all"
+               th:checked="${searchState == 'all'}">
+        <label>All</label>
 
             <th:block th:if="${searchState} != null">
-                <p>CHumps</p>
+                <th:block>
+                    <select th:name="searchCity">
+                        </option>
+                        <option value="all">
+                            <label>All</label>
+                        </option>
+                        <option th:each="city: ${cities}"
+                                th:value="${city.city}"
+                                >
+
+
+                    <label th:text="${city.city}"></label>
+
+
+                    </select>
+                </th:block>
         </th:block>
     <button type="submit">Filter</button>
     </form>

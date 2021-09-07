@@ -62,7 +62,7 @@ public class ScheduleController {
         model.addAttribute("searchState",searchState);
 
 //        Search by state
-        if(searchState != null) {
+        if(searchState != null && !searchState.equals("all")) {
             ArrayList<User> usersByState = new ArrayList<User>() {};
             Iterable<User> users = userRepository.findAll();
             for (User user:users) {
@@ -87,18 +87,20 @@ public class ScheduleController {
 
 
             //search by city
-            if(searchCity != null){
+            if(searchCity != null && !searchCity.equals("all")) {
                 ArrayList<User> usersByCity = new ArrayList<User>();
-                for (User user:usersByState
-                     ) {
-                    if(searchCity.equals(user.getCity())){
+                for (User user : usersByState
+                ) {
+                    if (searchCity.equals(user.getCity())) {
                         usersByCity.add(user);
-                        model.addAttribute("users",usersByCity);
-                    }
+                        model.addAttribute("users", usersByCity);
+                        }
+
                 }
             }
             else { //if no city
             model.addAttribute("users", usersByState);
+                System.out.println(searchCity);
             }
         }
         else { //if no state
