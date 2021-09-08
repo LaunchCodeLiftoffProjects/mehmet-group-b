@@ -61,7 +61,7 @@ public class ScheduleController {
 
     @PostMapping("")
     public String handleButton(HttpServletRequest request,
-                               @RequestParam int therapistId,
+                               @RequestParam(value="test") int therapistId,
                                Model model) {
         User theUser = getUserFromSession(request.getSession());
         model.addAttribute("title", "This is schedule");
@@ -70,17 +70,17 @@ public class ScheduleController {
 
         User therapist = userRepository.findById(therapistId).orElse(new User());
 
-        Appointment newAppointment = new Appointment(therapist,
-                    theUser);
+//        Appointment newAppointment = new Appointment(therapist,
+//                    theUser);
+//
+//        theUser.setAppointment(newAppointment);
+//        therapist.setAppointment(newAppointment);
 
-        theUser.setAppointment(newAppointment);
-        therapist.setAppointment(newAppointment);
+//        appointmentRepository.save(newAppointment);
+//
+//        userRepository.save(theUser);
+//        userRepository.save(therapist);
 
-        appointmentRepository.save(newAppointment);
-
-        userRepository.save(theUser);
-        userRepository.save(therapist);
-
-        return "schedule/index";
+        return "redirect:appointmentform/" + therapist.getId();
     }
 }

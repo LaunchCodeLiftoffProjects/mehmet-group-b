@@ -45,12 +45,18 @@
                     <tr>
                         <td th:text="${therapist.firstName}"></td>
                         <td>
-                            <button type="submit">
-                                <a
-                                        th:href="@{/appointmentform}"
-                                        th:text="'Schedule ' + ${therapist.firstName} + ' now!'">
-                                </a>
+                            <form method="post">
+                            <button type="submit"
+
+                                        th:name="test"
+
+                                        th:field="${therapist.id}"
+                                        th:value="${therapist.id}"
+                                        th:text="'Schedule ' + ${therapist.firstName} + ' now!'"
+                                >
+
                             </button>
+                            </form>
                         </td>
                     </tr>
                 </th:block>
