@@ -23,7 +23,7 @@ public class ProfileController {
 
     @Autowired
     UserRepository userRepository;
-    
+
 
     @GetMapping("/{userId}")
     public String displayProfile(Model model, @PathVariable int userId, HttpServletRequest request) {
@@ -55,7 +55,7 @@ public class ProfileController {
 
     }
 
-    private static final String userSessionKey = "user";
+    private static final String userSessionKey = "client";
 
     public User getUserFromSession(HttpSession session) {
         Integer userId = (Integer) session.getAttribute(userSessionKey);
