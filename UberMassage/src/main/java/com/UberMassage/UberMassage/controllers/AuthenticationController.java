@@ -63,15 +63,16 @@ public class AuthenticationController {
     public String displayRegistrationForm(@RequestParam(value = "stateId",required = false) Integer stateId, Model model) {
         model.addAttribute(new RegisterFormDTO());
         model.addAttribute(new User());
-        System.out.println(stateId);
+
 //        adding states to model
-        ArrayList<String> states = new ArrayList<String>();
-        for (State state:stateRepository.findAll()
-             ) {
-           String nextState = state.getState();
-           states.add(nextState);
-        }
-        model.addAttribute("states",states);
+//        ArrayList<String> states = new ArrayList<String>();
+//        for (State state:stateRepository.findAll()
+//             ) {
+//           String nextState = state.getState();
+//           states.add(nextState);
+//        }
+//        model.addAttribute("states",states);
+        model.addAttribute("states",stateRepository.findAll());
 
 //        adding cities to model based on selected state
         ArrayList<String> cities = new ArrayList<>();

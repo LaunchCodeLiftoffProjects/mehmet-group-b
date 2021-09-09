@@ -26,14 +26,24 @@
         </label>
         <p class="error" th:errors="${registerFormDTO.lastName}"></p>
     </div>
+
+<!--    <div th:each="state: ${states}">-->        <!--working on dynamic populating city drop down-->
+<!--        <form>-->
+<!--            <th:block th:each="state: ${states}">-->
+<!--                -->
+<!--            <input type="radio" th:text="${state.state}"-->
+<!--                                th:value="">-->
+
+<!--            </th:block>-->
+<!--        </form>-->
+<!--    </div>-->
+
     <div class="form-group">
         <label>State
             <select th:field="${registerFormDTO.state}">
                 <option th:each=" state: ${states}"
-                        th:value="${state}">
-<!--                        th:text="${state}">-->
-
-                        <a href="https://www.youtube.com/watch?v=p5g40IwdSgg&ab_channel=EvantheUsurper" th:text="${state}"></a>
+                        th:value="${state.state}"
+                        th:text="${state.state}">
 
                 </option>
             </select>
