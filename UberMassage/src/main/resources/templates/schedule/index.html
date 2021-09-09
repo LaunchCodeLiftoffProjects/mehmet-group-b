@@ -4,15 +4,73 @@
 <body>
 <header th:replace="fragments::header"></header>
 
+
+<div> <!-- search filter-->
+    <form method="get">
+        <label>State: </label>
+        <th:block th:each="state:${states}">
+
+        <input type="radio"
+               th:name="searchState"
+               th:value="${state.state}"
+               th:checked="${state.state == searchState}">
+        <label th:text="${state.state}"></label>
+        </th:block>
+
+        <input type="radio"
+               th:name="searchState"
+               value="all"
+               th:checked="${searchState == 'all'}">
+        <label>All</label>
+    <br>
+            <th:block th:if="${searchState} != null">
+            <label>City: </label>
+
+                <th:block>
+                    <select th:name="searchCity">
+                        </option>
+                        <option value="all">
+                            <label>All</label>
+                        </option>
+                        <option th:each="city: ${cities}"
+                                th:value="${city.city}"
+                                >
+
+
+                    <label th:text="${city.city}"></label>
+
+
+                    </select>
+                </th:block>
+        </th:block>
+
+    <button type="submit">Filter</button>
+    </form>
+
+</div>
 <div>
     <table class="table table-bordered">
         <thead class="thead-dark">
         <tr>
-            <th>ID</th>
             <th>Name</th>
-            <th>Category</th>
-            <th></th>
+            <th>Location</th>
+            <th>Schedule</th>
+
         </tr>
+<!--        <th:block>-->
+<!--            <tr th:each="therapist: ${therapists}">-->
+<!--                <td th:text = "${therapist.firstName}">-->
+<!--                </td>-->
+<!--                <td th:text="${therapist.therapist.user.firstName}"></td>-->
+<!--                <td th:text="${therapist.therapist.user.lastName}"></td>-->
+<!--                <td>-->
+<!--                    <form>-->
+<!--                    <button type="submit" th:value="${user}"></button>-->
+
+<!--                    </form>-->
+<!--                </td>-->
+<!--            </tr>-->
+<!--        </th:block>-->
         </thead>
         <tbody>
 
@@ -22,16 +80,18 @@
                 <th:block
                         th:if="${therapist.therapist} != null">
                 <tr>
-                    <td th:text="${therapist.firstName}"></td>
+                    <td th:text="${therapist.firstName}+' '+${therapist.lastName}"></td>
+                    <td th:text="${therapist.city}+', '+${therapist.state}"></td>
                     <td>
                         <button type="submit"
                                 name="therapistId"
-                        th:value="${therapist.id}" th:text="test">
+                                th:text="'Login to Schedule'"
+                                >
 
                         </button>
                     </td>
 
-                    <td th:text="${therapist.test}"></td>
+
                 </tr>
                 </th:block>
             </th:block>
@@ -46,14 +106,14 @@
                         <td th:text="${therapist.firstName}"></td>
                         <td>
                             <form method="post">
+
                             <button type="submit"
+                                    th:name="test"
 
-                                        th:name="test"
-
-                                        th:field="${therapist.id}"
-                                        th:value="${therapist.id}"
-                                        th:text="'Schedule ' + ${therapist.firstName} + ' now!'"
-                                >
+                                    th:field="${therapist.id}"
+                                    th:value="${therapist.id}"
+                                    th:text="'Schedule ' + ${therapist.firstName} + ' now!'"
+                            >
 
                             </button>
                             </form>

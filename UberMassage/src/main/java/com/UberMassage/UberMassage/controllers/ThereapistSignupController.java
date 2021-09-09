@@ -21,7 +21,8 @@ import java.util.Optional;
 
 @Controller
 @RequestMapping("therapistsignup")
-public class ThereapistSignupController {
+public class
+ThereapistSignupController {
 
     @Autowired
     UserRepository userRepository;
@@ -29,7 +30,7 @@ public class ThereapistSignupController {
     @Autowired
     TherapistRepository therapistRepository;
 
-    private static final String userSessionKey = "user";
+    private static final String userSessionKey = "client";
 
     public User getUserFromSession(HttpSession session) {
         Integer userId = (Integer) session.getAttribute(userSessionKey);
@@ -47,7 +48,10 @@ public class ThereapistSignupController {
     }
 
     @GetMapping()
-    public String displayTherapistSignupForm(Model model) {
+    public String displayTherapistSignupForm(Model model,HttpServletRequest request) {
+        User newUser = getUserFromSession(request.getSession());
+
+        model.addAttribute("client",newUser);
         model.addAttribute("genders", Gender.values());
         model.addAttribute("am1", true);
         model.addAttribute("am2", true);
@@ -55,6 +59,8 @@ public class ThereapistSignupController {
         model.addAttribute("hours", new Hours());
         model.addAttribute("therapist", new TherapistRegisterFormDTO());
         model.addAttribute("title", "This is just a test");
+
+
         return "therapistsignup/index";
     }
 

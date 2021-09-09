@@ -1,10 +1,10 @@
 package com.UberMassage.UberMassage.controllers;
 
+import com.UberMassage.UberMassage.data.CityRepository;
+import com.UberMassage.UberMassage.data.StateRepository;
 import com.UberMassage.UberMassage.data.TherapistRepository;
 import com.UberMassage.UberMassage.data.UserRepository;
-import com.UberMassage.UberMassage.models.Appointment;
-import com.UberMassage.UberMassage.models.Therapist;
-import com.UberMassage.UberMassage.models.User;
+import com.UberMassage.UberMassage.models.*;
 import com.UberMassage.UberMassage.models.dto.LoginFormDTO;
 import com.UberMassage.UberMassage.models.dto.RegisterFormDTO;
 import com.UberMassage.UberMassage.models.dto.TherapistRegisterFormDTO;
@@ -12,14 +12,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.Optional;
 
 @Controller
@@ -31,7 +29,15 @@ public class AuthenticationController {
     @Autowired
     TherapistRepository therapistRepository;
 
-    private static final String userSessionKey = "user";
+
+    private static final String userSessionKey = "client";
+
+    @Autowired
+    StateRepository stateRepository;
+
+    @Autowired
+    CityRepository cityRepository;
+
 
     public User getUserFromSession(HttpSession session) {
         Integer userId = (Integer) session.getAttribute(userSessionKey);
@@ -52,10 +58,34 @@ public class AuthenticationController {
         session.setAttribute(userSessionKey, user.getId());
     }
 
-    @GetMapping("/register")
-    public String displayRegistrationForm(Model model) {
+
+    @RequestMapping(value = "/register")
+    public String displayRegistrationForm(@RequestParam(value = "stateId",required = false) Integer stateId, Model model) {
         model.addAttribute(new RegisterFormDTO());
         model.addAttribute(new User());
+
+//        adding states to model
+//        ArrayList<String> states = new ArrayList<String>();
+//        for (State state:stateRepository.findAll()
+//             ) {
+//           String nextState = state.getState();
+//           states.add(nextState);
+//        }
+//        model.addAttribute("states",states);
+        model.addAttribute("states",stateRepository.findAll());
+
+//        adding cities to model based on selected state
+        ArrayList<String> cities = new ArrayList<>();
+        for (City city:cityRepository.findAll()
+             ) {
+//                if(stateId != null && city.getState().getId() == stateId){
+            String nextCity = city.getCity();
+            cities.add(nextCity);
+//            }
+        }
+        model.addAttribute("cities",cities);
+
+
         model.addAttribute("title", "Register");
         return "register";
     }
