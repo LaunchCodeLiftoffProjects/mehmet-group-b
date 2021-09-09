@@ -57,7 +57,7 @@ public class ScheduleController {
         User theUser = getUserFromSession(request.getSession());
 
         model.addAttribute("title", "This is schedule");
-        model.addAttribute("client", theUser);
+        model.addAttribute("user", theUser);
         model.addAttribute("states",stateRepository.findAll());
         model.addAttribute("searchState",searchState);
 
@@ -93,18 +93,17 @@ public class ScheduleController {
                 ) {
                     if (searchCity.equals(user.getCity())) {
                         usersByCity.add(user);
-                        model.addAttribute("users", usersByCity);
+                        model.addAttribute("therapists", usersByCity);
                         }
 
                 }
             }
             else { //if no city
-            model.addAttribute("users", usersByState);
-                System.out.println(searchCity);
+            model.addAttribute("therapists", usersByState);
             }
         }
         else { //if no state
-            model.addAttribute("users",userRepository.findAll());
+            model.addAttribute("therapists",userRepository.findAll());
         }
 
 
@@ -119,8 +118,8 @@ public class ScheduleController {
                                Model model) {
         User theUser = getUserFromSession(request.getSession());
         model.addAttribute("title", "This is schedule");
-        model.addAttribute("users", userRepository.findAll());
-        model.addAttribute("client", theUser);
+        model.addAttribute("therapists", userRepository.findAll());
+        model.addAttribute("user", theUser);
 
         User therapist = userRepository.findById(therapistId).orElse(new User());
 
