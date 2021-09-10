@@ -49,7 +49,7 @@ public class ProfileController {
                              Model model) {
 
         User theUser = getUserFromSession(request.getSession());
-        model.addAttribute("client",theUser);
+        model.addAttribute("user",theUser);
 
         return "redirect:profile/" + theUser.getId() ;
 

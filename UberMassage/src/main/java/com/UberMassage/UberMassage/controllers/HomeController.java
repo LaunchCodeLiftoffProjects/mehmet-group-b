@@ -27,7 +27,7 @@ public class HomeController {
     @Autowired
     CityRepository cityRepository;
 
-    private static final String userSessionKey = "user";
+    private static final String userSessionKey = "client";
 
     public User getUserFromSession(HttpSession session) {
         Integer userId = (Integer) session.getAttribute(userSessionKey);
@@ -50,6 +50,12 @@ public class HomeController {
 
         model.addAttribute("title", "Hello World");
         model.addAttribute("user", theUser);
+
+//        State Missouri = new State("MO");
+//        State Illinois = new State("IL");
+//
+//        stateRepository.save(Missouri);
+//        stateRepository.save(Illinois);
 
 //        City Columbia = new City("Columbia");
 //        City Joplin = new City("Joplin");

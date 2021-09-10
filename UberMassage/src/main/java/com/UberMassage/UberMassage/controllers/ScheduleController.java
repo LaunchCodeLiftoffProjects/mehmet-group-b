@@ -73,14 +73,14 @@ public class ScheduleController {
             //gets cities by selected state filter
             State selectedStateFilter = new State();
             for (State state:stateRepository.findAll()
-                 ) {
+            ) {
                 if(searchState.equals(state.getState())){
-                     selectedStateFilter = state;
+                    selectedStateFilter = state;
                 }
             }
             ArrayList <City> citiesFromSelectedState = new ArrayList<City>();
             for (City city: selectedStateFilter.getCities()
-                 ) {
+            ) {
                 citiesFromSelectedState.add(city);
             }
             model.addAttribute("cities",citiesFromSelectedState);
@@ -94,12 +94,12 @@ public class ScheduleController {
                     if (searchCity.equals(user.getCity())) {
                         usersByCity.add(user);
                         model.addAttribute("therapists", usersByCity);
-                        }
+                    }
 
                 }
             }
             else { //if no city
-            model.addAttribute("therapists", usersByState);
+                model.addAttribute("therapists", usersByState);
             }
         }
         else { //if no state
