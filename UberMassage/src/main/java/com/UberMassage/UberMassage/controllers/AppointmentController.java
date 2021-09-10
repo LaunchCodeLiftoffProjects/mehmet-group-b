@@ -48,7 +48,7 @@ public class AppointmentController {
         Optional optTherapist = userRepository.findById(therapistId);
         if (optTherapist.isPresent()) {
 
-            model.addAttribute("title", "Hd");
+            model.addAttribute("title", "Your relaxation is just around the corner");
             model.addAttribute("user", theUser);
 
             User therapist = (User) optTherapist.get();
