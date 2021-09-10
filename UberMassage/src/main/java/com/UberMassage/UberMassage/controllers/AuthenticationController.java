@@ -30,7 +30,7 @@ public class AuthenticationController {
     TherapistRepository therapistRepository;
 
 
-    private static final String userSessionKey = "client";
+    private static final String userSessionKey = "user";
 
     @Autowired
     StateRepository stateRepository;

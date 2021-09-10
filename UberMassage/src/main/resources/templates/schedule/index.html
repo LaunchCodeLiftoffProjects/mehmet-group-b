@@ -10,11 +10,11 @@
         <label>State: </label>
         <th:block th:each="state:${states}">
 
-        <input type="radio"
-               th:name="searchState"
-               th:value="${state.state}"
-               th:checked="${state.state == searchState}">
-        <label th:text="${state.state}"></label>
+            <input type="radio"
+                   th:name="searchState"
+                   th:value="${state.state}"
+                   th:checked="${state.state == searchState}">
+            <label th:text="${state.state}"></label>
         </th:block>
 
         <input type="radio"
@@ -22,29 +22,29 @@
                value="all"
                th:checked="${searchState == 'all'}">
         <label>All</label>
-    <br>
-            <th:block th:if="${searchState} != null">
+        <br>
+        <th:block th:if="${searchState} != null">
             <label>City: </label>
 
-                <th:block>
-                    <select th:name="searchCity">
-                        </option>
-                        <option value="all">
-                            <label>All</label>
-                        </option>
-                        <option th:each="city: ${cities}"
-                                th:value="${city.city}"
-                                >
+            <th:block>
+                <select th:name="searchCity">
+
+                    <option value="all">
+                        <label>All</label>
+                    </option>
+                    <option th:each="city: ${cities}"
+                            th:value="${city.city}"
+                    >
+                        <label th:text="${city.city}"></label>
+                    </option>
 
 
-                    <label th:text="${city.city}"></label>
 
-
-                    </select>
-                </th:block>
+                </select>
+            </th:block>
         </th:block>
 
-    <button type="submit">Filter</button>
+        <button type="submit">Filter</button>
     </form>
 
 </div>
@@ -57,45 +57,49 @@
             <th>Schedule</th>
 
         </tr>
-<!--        <th:block>-->
-<!--            <tr th:each="therapist: ${therapists}">-->
-<!--                <td th:text = "${therapist.firstName}">-->
-<!--                </td>-->
-<!--                <td th:text="${therapist.therapist.user.firstName}"></td>-->
-<!--                <td th:text="${therapist.therapist.user.lastName}"></td>-->
-<!--                <td>-->
-<!--                    <form>-->
-<!--                    <button type="submit" th:value="${user}"></button>-->
+        <!--        <th:block>-->
+        <!--            <tr th:each="therapist: ${therapists}">-->
+        <!--                <td th:text = "${therapist.firstName}">-->
+        <!--                </td>-->
+        <!--                <td th:text="${therapist.therapist.user.firstName}"></td>-->
+        <!--                <td th:text="${therapist.therapist.user.lastName}"></td>-->
+        <!--                <td>-->
+        <!--                    <form>-->
+        <!--                    <button type="submit" th:value="${user}"></button>-->
 
-<!--                    </form>-->
-<!--                </td>-->
-<!--            </tr>-->
-<!--        </th:block>-->
+        <!--                    </form>-->
+        <!--                </td>-->
+        <!--            </tr>-->
+        <!--        </th:block>-->
         </thead>
         <tbody>
 
         <th:block th:if="${user} == null">
-        <form method="post">
-            <th:block th:each="therapist : ${therapists}">
-                <th:block
-                        th:if="${therapist.therapist} != null">
-                <tr>
-                    <td th:text="${therapist.firstName}+' '+${therapist.lastName}"></td>
-                    <td th:text="${therapist.city}+', '+${therapist.state}"></td>
-                    <td>
-                        <button type="submit"
-                                name="therapistId"
-                                th:text="'Login to Schedule'"
-                                >
+            <form method="post">
+                <th:block th:each="therapist : ${therapists}">
+                    <th:block
+                            th:if="${therapist.therapist} != null">
+                        <tr>
+                            <td th:text="${therapist.firstName}+' '+${therapist.lastName}"></td>
+                            <td th:text="${therapist.city}+', '+${therapist.state}"></td>
+                            <td>
 
-                        </button>
-                    </td>
+                                <form action="/login">
+                                    <button
+                                            type="submit"
+                                            name="therapistId"
+                                            th:text="'Login to Schedule'"
+                                    >
+
+                                    </button>
+                                </form>
+                            </td>
 
 
-                </tr>
+                        </tr>
+                    </th:block>
                 </th:block>
-            </th:block>
-        </form>
+            </form>
         </th:block>
 
         <th:block th:unless="${user} == null">
@@ -103,19 +107,20 @@
                 <th:block
                         th:if="${therapist.therapist} != null and ${therapist.id} != ${user.id}">
                     <tr>
-                        <td th:text="${therapist.firstName}"></td>
+                        <td th:text="${therapist.firstName}+' '+${therapist.lastName}"></td>
+                        <td th:text="${therapist.city}+', '+${therapist.state}"></td>
                         <td>
                             <form method="post">
 
-                            <button type="submit"
-                                    th:name="test"
+                                <button type="submit"
+                                        th:name="test"
 
-                                    th:field="${therapist.id}"
-                                    th:value="${therapist.id}"
-                                    th:text="'Schedule ' + ${therapist.firstName} + ' now!'"
-                            >
+                                        th:field="${therapist.id}"
+                                        th:value="${therapist.id}"
+                                        th:text="'Schedule ' + ${therapist.firstName} + ' now!'"
+                                >
 
-                            </button>
+                                </button>
                             </form>
                         </td>
                     </tr>

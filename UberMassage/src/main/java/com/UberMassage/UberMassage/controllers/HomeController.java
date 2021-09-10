@@ -27,7 +27,7 @@ public class HomeController {
     @Autowired
     CityRepository cityRepository;
 
-    private static final String userSessionKey = "client";
+    private static final String userSessionKey = "user";
 
     public User getUserFromSession(HttpSession session) {
         Integer userId = (Integer) session.getAttribute(userSessionKey);
@@ -49,7 +49,13 @@ public class HomeController {
         User theUser = getUserFromSession(request.getSession());
 
         model.addAttribute("title", "Hello World");
-        model.addAttribute("client", theUser);
+        model.addAttribute("user", theUser);
+
+//        State Missouri = new State("MO");
+//        State Illinois = new State("IL");
+//
+//        stateRepository.save(Missouri);
+//        stateRepository.save(Illinois);
 
 //        City Columbia = new City("Columbia");
 //        City Joplin = new City("Joplin");
@@ -72,10 +78,10 @@ public class HomeController {
 //        cityRepository.save(StJoseph);
 //        cityRepository.save(StLouis);
 
-//    for (int i = 36; i < 45; i++) {
+//    for (int i = 6; i <= 23; i++) {
 //        Optional<City> cityresult = cityRepository.findById(i);
 //        City acity = cityresult.get();
-//        Optional<State> stateresult = stateRepository.findById(35);
+//        Optional<State> stateresult = stateRepository.findById(24);
 //        State astate = stateresult.get();
 //
 //        acity.setState(astate);
