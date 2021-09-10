@@ -32,8 +32,6 @@
     </div>
 
     <div>        <!--working on dynamic populating city drop down-->
-
-
         <label>State: </label>
             <select th:field="${registerFormDTO.state}" name="selectState" id="selectState" th:name="selectedState">
                     <option selected="selected" value="">---Select State---</option>
@@ -55,7 +53,7 @@
 
     </div>
 
-    <!--working on dynamic populating city drop down-->
+    <!--working on dynamic populating city drop down  ^^^^^-->
 
 <!--    <div class="form-group">-->
 <!--        <label>State-->
@@ -118,20 +116,15 @@ $(document).ready(
         selectedState: $(this).val(),
         ajax: 'true'
         }, function(data){
-         console.log(data);
-         let length = data.length;
-         let html = '';
-         for(let i = 0; i < data.length ; i++){
-         html += '<option value="' +data[i]+ '">' +data[i]+ '</option>'
-         };
-
-        $('#selectCity').html(html);
-        }
+            let html = '';
+                for(let i = 0; i < data.length ; i++){
+                    html += '<option value="' +data[i]+ '">' +data[i]+ '</option>'
+                    };
+            $('#selectCity').html(html);
+            }
         )}
 ));
-
-
-
 </script>
+
 </body>
 </html>
