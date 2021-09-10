@@ -3,6 +3,8 @@
 <head th:replace="fragments::head"></head>
 <body>
 <header th:replace="fragments::header"></header>
-<h1 th:text="${therapist.firstName}"></h1>
+<h1 th:text="'your time is between'+${therapist.therapist.hoursOfOperation.startConverted} +${therapist.therapist.hoursOfOperation.finishConverted}"></h1>
+<h1 th:text="'your appointment is with '+${therapist.firstName}"></h1>
+
 </body>
 </html>
