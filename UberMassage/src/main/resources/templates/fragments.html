@@ -8,6 +8,7 @@
     <title th:text="${title}">Inventory Application</title>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" th:href="@{/styles/main.css}">
 </head>
 <body>
 <header class="text-center" th:fragment="header">
@@ -21,22 +22,23 @@
                     <a class="nav-link" th:href="@{/schedule}">
                         Schedule</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" th:if="${client} != null">
                     <a class="nav-link"
                        th:href="@{/profile}">
                         Profile</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" th:if="${client} == null">
                     <a class="nav-link" th:href="@{/login}">
                         Login</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{/signup}">
-                        Signup</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" th:href="@{/}">
                         Home</a>
+                </li>
+                <li class="nav-item" th:if="${client} != null">
+                    <a class="nav-link"
+                       th:href="@{/logout}">
+                        Logout</a>
                 </li>
             </ul>
 

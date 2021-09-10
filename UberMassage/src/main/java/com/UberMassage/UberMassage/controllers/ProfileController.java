@@ -23,11 +23,13 @@ public class ProfileController {
 
     @Autowired
     UserRepository userRepository;
-    
+
 
     @GetMapping("/{userId}")
-    public String displayProfile(Model model, @PathVariable int userId) {
+    public String displayProfile(Model model, @PathVariable int userId, HttpServletRequest request) {
+        User theUser = getUserFromSession(request.getSession());
         model.addAttribute("title", "This is profile");
+        model.addAttribute("client",theUser);
 
         Optional optUser = userRepository.findById(userId);
         if (optUser.isPresent()) {
@@ -46,17 +48,14 @@ public class ProfileController {
                              Errors errors, HttpServletRequest request,
                              Model model) {
 
-
-
         User theUser = getUserFromSession(request.getSession());
-
-        System.out.println(theUser.getId());
+        model.addAttribute("client",theUser);
 
         return "redirect:profile/" + theUser.getId() ;
 
     }
 
-    private static final String userSessionKey = "user";
+    private static final String userSessionKey = "client";
 
     public User getUserFromSession(HttpSession session) {
         Integer userId = (Integer) session.getAttribute(userSessionKey);

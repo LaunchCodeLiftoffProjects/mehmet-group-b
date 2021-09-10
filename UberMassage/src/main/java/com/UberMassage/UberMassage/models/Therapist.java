@@ -1,15 +1,10 @@
 package com.UberMassage.UberMassage.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 import java.util.HashMap;
 
 @Entity
 public class Therapist {
-
-
 
     @OneToOne (mappedBy = "therapist")
     private User user;
@@ -23,19 +18,23 @@ public class Therapist {
 
     private double costOfService;
 
-    private String appointment;
+    @OneToOne(cascade= CascadeType.ALL)
+    @JoinColumn(name = "appointment_id")
+    private Appointment appointment;
 
-    //private Hours hoursOfOperation;
+    private Hours hoursOfOperation;
 
-    private String gender;
+    private Gender gender;
 
     public Therapist() {
 
     }
 
-    public Therapist(User user,String gender) {
-        this.user =user;
+    public Therapist(User user, Gender gender, Hours hoursOfOperation) {
+        this.user = user;
         this.gender = gender;
+        this.hoursOfOperation = hoursOfOperation;
+
     }
 
 //    public Therapist(User user, String typeOfMassage, double costOfService,
@@ -71,22 +70,22 @@ public class Therapist {
         this.costOfService = costOfService;
     }
 
-    public String getAppointment() {
+    public Appointment getAppointment() {
         return appointment;
     }
 
-    public void setAppointment(String appointment) {
+    public void setAppointment(Appointment appointment) {
         this.appointment = appointment;
     }
 
-//    public Hours getHoursOfOperation() {
-//        return hoursOfOperation;
-//    }
-//
-//    public void setHoursOfOperation(
-//            Hours hoursOfOperation) {
-//        this.hoursOfOperation = hoursOfOperation;
-//    }
+    public Hours getHoursOfOperation() {
+        return hoursOfOperation;
+    }
+
+    public void setHoursOfOperation(
+            Hours hoursOfOperation) {
+        this.hoursOfOperation = hoursOfOperation;
+    }
 
 
     public User getUser() {
@@ -97,11 +96,24 @@ public class Therapist {
         this.user = user;
     }
 
-    public String getGender() {
+    public Gender getGender() {
         return gender;
     }
 
-    public void setGender(String gender) {
+    public void setGender(Gender gender) {
         this.gender = gender;
+    }
+
+    public int getTherapistId() {
+        return therapistId;
+    }
+
+    public void setTherapistId(int therapistId) {
+        this.therapistId = therapistId;
+    }
+
+    public void genderChange(Gender genderTest, String test) {
+        Gender result = genderTest;
+        test.toUpperCase();
     }
 }
