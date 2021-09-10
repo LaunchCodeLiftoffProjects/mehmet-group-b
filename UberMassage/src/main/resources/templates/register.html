@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head th:replace="fragments :: head"></head>
+
 <body class="container">
 
 <header th:replace="fragments :: header"></header>
+
 
 <form method="post">
     <div class="form-group">
@@ -12,6 +14,7 @@
         </label>
         <p class="error" th:errors="${registerFormDTO.username}"></p>
     </div>
+
     <div class="form-group">
         <label>First Name
             <input class="form-control"
@@ -19,6 +22,7 @@
         </label>
         <p class="error" th:errors="${registerFormDTO.firstName}"></p>
     </div>
+
     <div class="form-group">
         <label>Last Name
             <input class="form-control"
@@ -27,39 +31,75 @@
         <p class="error" th:errors="${registerFormDTO.lastName}"></p>
     </div>
 
-<!--    <div th:each="state: ${states}">-->        <!--working on dynamic populating city drop down-->
-<!--        <form>-->
-<!--            <th:block th:each="state: ${states}">-->
-<!--                -->
-<!--            <input type="radio" th:text="${state.state}"-->
-<!--                                th:value="">-->
+    <div>        <!--working on dynamic populating city drop down-->
+        <form>
 
-<!--            </th:block>-->
-<!--        </form>-->
-<!--    </div>-->
+        <label>State: </label>
+            <select name="selectState" id="selectState" th:name="selectedState">
+                    <option selected="selected">---Select State---</option>
+                   <option      th:each="state:${states}"
+                                th:text="${state.state}"
+                                th:value="${state.state}">
+                   </option>
+            </select>
+
+        </form>
+    </div>
 
     <div class="form-group">
-        <label>State
-            <select th:field="${registerFormDTO.state}">
-                <option th:each=" state: ${states}"
-                        th:value="${state.state}"
-                        th:text="${state.state}">
-
-                </option>
+        <label>City:</label>
+            <select name="selectCity" id="selectCity">
+                <option>---Select City---</option>
             </select>
-        </label>
+
     </div>
 
-      <div class="form-group">
-        <label>City</label>
-            <select th:field="${registerFormDTO.city}">
-                <option th:each="city: ${cities}"
-                        th:value="${city}"
-                        th:text="${city}">
+    <script type="text/javascript">
+$(document).ready(
+ $('#selectState').change(
+        function(){
+        $.getJSON("/cities",{
+        selectedState: $(this).val(),
+        ajax: 'true'
+        }, function(data){
+         console.log(data);
+         let length = data.length;
+         let html = '<select>';
+         for(let i = 0; i < data.length ; i++){
+         html += '<option th:value="'+data[i]+'">'+data[i]+'</option>'
+         };
+         html += '</select>';
+        $('#selectCity').html(html);
+        }
+        )}
+));
 
-                </option>
-            </select>
-    </div>
+
+
+</script><!--working on dynamic populating city drop down-->
+
+<!--    <div class="form-group">-->
+<!--        <label>State-->
+<!--            <select th:field="${registerFormDTO.state}">-->
+<!--                <option th:each=" state: ${states}"-->
+<!--                        th:value="${state.state}"-->
+<!--                        th:text="${state.state}">-->
+
+<!--                </option>-->
+<!--            </select>-->
+<!--        </label>-->
+<!--    </div>-->
+
+<!--      <div class="form-group">-->
+<!--        <label>City</label>-->
+<!--            <select th:field="${registerFormDTO.city}">-->
+<!--                <option th:each="city: ${cities}"-->
+<!--                        th:value="${city}"-->
+<!--                        th:text="${city}">-->
+
+<!--                </option>-->
+<!--            </select>-->
+<!--    </div>-->
 
     <div class="form-group">
         <label>Email

@@ -52,7 +52,7 @@ public class ScheduleController {
 
     @GetMapping("")
     public String displaySchedule(@RequestParam(required = false) String searchState,@RequestParam(required = false)String searchCity, Model model, HttpServletRequest request) {
-
+        System.out.println();
 
         User theUser = getUserFromSession(request.getSession());
 
