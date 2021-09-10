@@ -2,9 +2,13 @@ package com.UberMassage.UberMassage.models.dto;
 
 import com.UberMassage.UberMassage.models.Appointment;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
 public class RegisterFormDTO extends LoginFormDTO{
 
     private String verifyPassword;
+
 
     private String firstName;
     private String lastName;
@@ -12,7 +16,12 @@ public class RegisterFormDTO extends LoginFormDTO{
     private String phoneNumber;
     private String email;
 
+    @NotBlank(message = "have to have state")
+    @NotNull(message = "state can't be null")
     private String state;
+    
+    @NotBlank(message = "have to have city")
+    @NotBlank(message = "city can't be null")
     private String city;
 
     private Appointment appointment;

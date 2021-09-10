@@ -32,51 +32,30 @@
     </div>
 
     <div>        <!--working on dynamic populating city drop down-->
-        <form>
+
 
         <label>State: </label>
-            <select name="selectState" id="selectState" th:name="selectedState">
-                    <option selected="selected">---Select State---</option>
+            <select th:field="${registerFormDTO.state}" name="selectState" id="selectState" th:name="selectedState">
+                    <option selected="selected" value="">---Select State---</option>
                    <option      th:each="state:${states}"
                                 th:text="${state.state}"
                                 th:value="${state.state}">
                    </option>
             </select>
+            <p class="error" th:errors="${registerFormDTO.state}"></p>
 
-        </form>
     </div>
 
     <div class="form-group">
         <label>City:</label>
-            <select name="selectCity" id="selectCity">
-                <option>---Select City---</option>
+            <select name="selectCity" id="selectCity" th:field="${registerFormDTO.city}">
+                <option value="">---Select City---</option>
             </select>
+        <p class="error" th:errors="${registerFormDTO.city}"></p>
 
     </div>
 
-    <script type="text/javascript">
-$(document).ready(
- $('#selectState').change(
-        function(){
-        $.getJSON("/cities",{
-        selectedState: $(this).val(),
-        ajax: 'true'
-        }, function(data){
-         console.log(data);
-         let length = data.length;
-         let html = '<select>';
-         for(let i = 0; i < data.length ; i++){
-         html += '<option th:value="'+data[i]+'">'+data[i]+'</option>'
-         };
-         html += '</select>';
-        $('#selectCity').html(html);
-        }
-        )}
-));
-
-
-
-</script><!--working on dynamic populating city drop down-->
+    <!--working on dynamic populating city drop down-->
 
 <!--    <div class="form-group">-->
 <!--        <label>State-->
@@ -130,5 +109,29 @@ $(document).ready(
     <input type="submit" class="btn btn-primary" value="Register" />
 </form>
 
+
+<script type="text/javascript">
+$(document).ready(
+ $('#selectState').change(
+        function(){
+        $.getJSON("/cities",{
+        selectedState: $(this).val(),
+        ajax: 'true'
+        }, function(data){
+         console.log(data);
+         let length = data.length;
+         let html = '';
+         for(let i = 0; i < data.length ; i++){
+         html += '<option value="' +data[i]+ '">' +data[i]+ '</option>'
+         };
+
+        $('#selectCity').html(html);
+        }
+        )}
+));
+
+
+
+</script>
 </body>
 </html>
