@@ -51,12 +51,12 @@ public class HomeController {
         model.addAttribute("title", "Hello World");
         model.addAttribute("user", theUser);
 
-//        State MO = new State("MO");
-//        State IL = new State("IL");
+//        State Missouri = new State("MO");
+//        State Illinois = new State("IL");
 //
-//        stateRepository.save(MO);
-//        stateRepository.save(IL);
-//
+//        stateRepository.save(Missouri);
+//        stateRepository.save(Illinois);
+
 //        City Columbia = new City("Columbia");
 //        City Joplin = new City("Joplin");
 //        City KansasCity = new City("Kansas City");
@@ -78,10 +78,10 @@ public class HomeController {
 //        cityRepository.save(StJoseph);
 //        cityRepository.save(StLouis);
 
-//    for (int i = 3; i <= 11; i++) {
+//    for (int i = 6; i <= 23; i++) {
 //        Optional<City> cityresult = cityRepository.findById(i);
 //        City acity = cityresult.get();
-//        Optional<State> stateresult = stateRepository.findById(1);
+//        Optional<State> stateresult = stateRepository.findById(24);
 //        State astate = stateresult.get();
 //
 //        acity.setState(astate);

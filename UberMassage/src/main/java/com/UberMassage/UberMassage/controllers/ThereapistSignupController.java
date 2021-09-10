@@ -30,7 +30,7 @@ ThereapistSignupController {
     @Autowired
     TherapistRepository therapistRepository;
 
-    private static final String userSessionKey = "client";
+    private static final String userSessionKey = "user";
 
     public User getUserFromSession(HttpSession session) {
         Integer userId = (Integer) session.getAttribute(userSessionKey);
@@ -51,7 +51,7 @@ ThereapistSignupController {
     public String displayTherapistSignupForm(Model model,HttpServletRequest request) {
         User newUser = getUserFromSession(request.getSession());
 
-        model.addAttribute("client",newUser);
+        model.addAttribute("user",newUser);
         model.addAttribute("genders", Gender.values());
         model.addAttribute("am1", true);
         model.addAttribute("am2", true);
