@@ -33,7 +33,7 @@ public class ScheduleController {
     @Autowired
     CityRepository cityRepository;
 
-    private static final String userSessionKey = "client";
+    private static final String userSessionKey = "user";
 
     public User getUserFromSession(HttpSession session) {
         Integer userId = (Integer) session.getAttribute(userSessionKey);
@@ -105,9 +105,6 @@ public class ScheduleController {
         else { //if no state
             model.addAttribute("therapists",userRepository.findAll());
         }
-
-
-
 
         return "schedule/index";
     }

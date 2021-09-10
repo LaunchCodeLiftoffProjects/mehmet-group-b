@@ -29,7 +29,7 @@ public class ProfileController {
     public String displayProfile(Model model, @PathVariable int userId, HttpServletRequest request) {
         User theUser = getUserFromSession(request.getSession());
         model.addAttribute("title", "This is profile");
-        model.addAttribute("client",theUser);
+        model.addAttribute("user",theUser);
 
         Optional optUser = userRepository.findById(userId);
         if (optUser.isPresent()) {
@@ -55,7 +55,7 @@ public class ProfileController {
 
     }
 
-    private static final String userSessionKey = "client";
+    private static final String userSessionKey = "user";
 
     public User getUserFromSession(HttpSession session) {
         Integer userId = (Integer) session.getAttribute(userSessionKey);

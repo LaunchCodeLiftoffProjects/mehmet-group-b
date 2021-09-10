@@ -28,16 +28,16 @@
 
                 <th:block>
                     <select th:name="searchCity">
-                        </option>
+
                         <option value="all">
                             <label>All</label>
                         </option>
                         <option th:each="city: ${cities}"
                                 th:value="${city.city}"
                                 >
-
-
                     <label th:text="${city.city}"></label>
+                        </option>
+
 
 
                     </select>
@@ -83,12 +83,16 @@
                     <td th:text="${therapist.firstName}+' '+${therapist.lastName}"></td>
                     <td th:text="${therapist.city}+', '+${therapist.state}"></td>
                     <td>
-                        <button type="submit"
+
+                        <form action="/login">
+                        <button
+                                type="submit"
                                 name="therapistId"
                                 th:text="'Login to Schedule'"
                                 >
 
                         </button>
+                        </form>
                     </td>
 
 
@@ -103,7 +107,8 @@
                 <th:block
                         th:if="${therapist.therapist} != null and ${therapist.id} != ${user.id}">
                     <tr>
-                        <td th:text="${therapist.firstName}"></td>
+                        <td th:text="${therapist.firstName}+' '+${therapist.lastName}"></td>
+                        <td th:text="${therapist.city}+', '+${therapist.state}"></td>
                         <td>
                             <form method="post">
 

@@ -27,7 +27,7 @@ public class HomeController {
     @Autowired
     CityRepository cityRepository;
 
-    private static final String userSessionKey = "client";
+    private static final String userSessionKey = "user";
 
     public User getUserFromSession(HttpSession session) {
         Integer userId = (Integer) session.getAttribute(userSessionKey);
@@ -49,7 +49,7 @@ public class HomeController {
         User theUser = getUserFromSession(request.getSession());
 
         model.addAttribute("title", "Hello World");
-        model.addAttribute("client", theUser);
+        model.addAttribute("user", theUser);
 
 //        City Columbia = new City("Columbia");
 //        City Joplin = new City("Joplin");
