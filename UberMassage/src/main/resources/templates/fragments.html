@@ -11,40 +11,36 @@
     <link rel="stylesheet" th:href="@{/styles/main.css}">
 </head>
 <body>
-<header class="text-center" th:fragment="header">
-    <div class="container">
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4 sticky-top" th:fragment="header">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/schedule}">
+                    Schedule</a>
+            </li>
+            <li class="nav-item" th:if="${user} != null">
+                <a class="nav-link"
+                   th:href="@{/profile}">
+                    Profile</a>
+            </li>
+            <li class="nav-item" th:if="${user} == null">
+                <a class="nav-link" th:href="@{/login}">
+                    Login</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/}">
+                    Home</a>
+            </li>
+            <li class="nav-item" th:if="${user} != null">
+                <a class="nav-link"
+                   th:href="@{/logout}">
+                    Logout</a>
+            </li>
+        </ul>
+    </nav>
+    <main>
         <h1 th:text="${title}">REPLACE</h1>
-
-
-        <nav>
-            <ul class ="nav h4">
-                <li class="nav-item">
-                    <a class="nav-link" th:href="@{/schedule}">
-                        Schedule</a>
-                </li>
-                <li class="nav-item" th:if="${user} != null">
-                    <a class="nav-link"
-                       th:href="@{/profile}">
-                        Profile</a>
-                </li>
-                <li class="nav-item" th:if="${user} == null">
-                    <a class="nav-link" th:href="@{/login}">
-                        Login</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" th:href="@{/}">
-                        Home</a>
-                </li>
-                <li class="nav-item" th:if="${user} != null">
-                    <a class="nav-link"
-                       th:href="@{/logout}">
-                        Logout</a>
-                </li>
-            </ul>
-
-        </nav>
-    </div>
-</header>
-
+        <div th:fragment="content">
+        </div>
+    </main>
 </body>
 </html>

@@ -2,52 +2,59 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments::head"></head>
 <body>
-<header th:replace="fragments::header"></header>
+    <header th:replace="fragments::header"></header>
+    <style th:inline="text">
+<!--        body {-->
+<!--            background: url([[@{/images/Background.jpg}]]);-->
+<!--                   no-repeat center center fixed;-->
+<!--            background-size: cover;-->
+<!--        }-->
+    </style>
+    <main role="main" class="container">
+        
+        <strong>First name</strong>
+        <p th:text="${user.firstName}"></p>
+        <strong>Last name</strong>
+        <p th:text="${user.lastName}"></p>
+        <strong>Email</strong>
+        <p th:text="${user.email}"></p>
+        <strong>State</strong>
+        <p th:text="${user.state}"></p>
+        <strong>City</strong>
+        <p th:text="${user.city}"></p>
+        <strong>phone number</strong>
+        <p th:text="${user.phoneNumber}"></p>
+        <strong>Username</strong>
+        <p th:text="${user.username}"></p>
 
-<h2>First name</h2>
-<p th:text="${user.firstName}"></p>
-<h2>Last name</h2>
-<p th:text="${user.lastName}"></p>
-<h2>Email</h2>
-<p th:text="${user.email}"></p>
-<h2>State</h2>
-<p th:text="${user.state}"></p>
-<h2>City</h2>
-<p th:text="${user.city}"></p>
-<h2>phone number</h2>
-<p th:text="${user.phoneNumber}"></p>
-<h2>Username</h2>
-<p th:text="${user.username}"></p>
+        <div th:if="${user.therapist} != null">
+            <br>
+            <br>
+            <strong>Your Gender</strong>
+            <p th:text="${user.therapist.gender}"></p>
+            <strong>Your Hours</strong>
+            <p th:text="${user.therapist.hoursOfOperation.startConverted()}"></p>
+            <strong>Your Stop Time</strong>
+            <p
+                    th:text="${user.therapist.hoursOfOperation.finishConverted}"></p>
 
-<div th:if="${user.therapist} != null">
-    <br>
-    <br>
-    <h2>Your Gender</h2>
-    <p th:text="${user.therapist.gender}"></p>
-    <h2>Your Hours</h2>
-    <p th:text="${user.therapist.hoursOfOperation.startConverted()}"></p>
-    <h2>Your Stop Time</h2>
-    <p
-            th:text="${user.therapist.hoursOfOperation.finishConverted}"></p>
-
-</div>
-
-
-<div th:unless="${user.therapist} != null">
-    <br>
-    <br>
-    <h2>Are you a therapist? Sign up now to provide services.</h2>
-    <a th:href="@{/therapistsignup/}">
-        Yes</a>
-</div>
-
-<h2>Appointment?</h2>
-
-<div th:if="${user.appointment} != null">
-    <p th:text="${user.appointment.getTherapist().getFirstName()}"></p>
-</div>
+        </div>
 
 
+        <div th:unless="${user.therapist} != null">
+            <br>
+            <br>
+            <strong>Are you a therapist? Sign up now to provide services.</strong>
+            <a th:href="@{/therapistsignup/}">
+                Yes</a>
+        </div>
+
+        <strong>Appointment?</strong>
+
+        <div th:if="${user.appointment} != null">
+            <p th:text="${user.appointment.getTherapist().getFirstName()}"></p>
+        </div>
+    </main>
 
 </body>
 </html>
