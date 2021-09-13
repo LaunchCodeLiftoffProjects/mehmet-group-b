@@ -118,18 +118,9 @@ public class ScheduleController {
         model.addAttribute("therapists", userRepository.findAll());
         model.addAttribute("user", theUser);
 
+
+
         User therapist = userRepository.findById(therapistId).orElse(new User());
-
-//        Appointment newAppointment = new Appointment(therapist,
-//                    theUser);
-//
-//        theUser.setAppointment(newAppointment);
-//        therapist.setAppointment(newAppointment);
-
-//        appointmentRepository.save(newAppointment);
-//
-//        userRepository.save(theUser);
-//        userRepository.save(therapist);
 
         return "redirect:appointmentform/" + therapist.getId();
     }

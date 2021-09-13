@@ -1,17 +1,17 @@
 package com.UberMassage.UberMassage.controllers;
 
+import com.UberMassage.UberMassage.data.AppointmentRepository;
 import com.UberMassage.UberMassage.data.UserRepository;
+import com.UberMassage.UberMassage.models.Appointment;
 import com.UberMassage.UberMassage.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 import java.util.Optional;
 
 @Controller
@@ -20,6 +20,9 @@ public class AppointmentController {
 
     @Autowired
     UserRepository userRepository;
+
+    @Autowired
+    AppointmentRepository appointmentRepository;
 
     private static final String userSessionKey = "user";
 
@@ -53,12 +56,41 @@ public class AppointmentController {
 
             User therapist = (User) optTherapist.get();
             model.addAttribute("therapist", therapist);
+
+            model.addAttribute(new Appointment());
             return "appointmentform/index";
 
         } else {
             return "redirect:../";
         }
 
+    }
+
+    @PostMapping("/{therapistId}")
+    public String handleAppointmentPage(Model model,
+                                        HttpServletRequest request,
+                                        @RequestParam int therapistId
+//                                        ,@ModelAttribute @Valid Appointment
+//                                        appointment
+    ) {
+        model.addAttribute("title", "YoBo");
+
+        User theUser = getUserFromSession(request.getSession());
+
+        User therapist = userRepository.findById(therapistId).orElse(new User());
+
+        Appointment newAppointment = new Appointment(therapist,
+                theUser);
+
+        theUser.setAppointment(newAppointment);
+        therapist.setAppointment(newAppointment);
+
+        appointmentRepository.save(newAppointment);
+
+        userRepository.save(theUser);
+        userRepository.save(therapist);
+
+        return "redirect:/profile";
     }
 
 
