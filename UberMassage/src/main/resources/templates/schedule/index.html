@@ -75,7 +75,7 @@
         <tbody>
 
         <th:block th:if="${user} == null">
-            <form method="post">
+            <form>
                 <th:block th:each="therapist : ${therapists}">
                     <th:block
                             th:if="${therapist.therapist} != null">
@@ -85,9 +85,8 @@
                             <td>
 
                                 <form action="/login">
-                                    <button
-                                            type="submit"
-                                            name="therapistId"
+                                    <button type="submit"
+
                                             th:text="'Login to Schedule'"
                                     >
 
@@ -101,6 +100,7 @@
                 </th:block>
             </form>
         </th:block>
+
 
         <th:block th:unless="${user} == null">
             <th:block th:each="therapist : ${therapists}">

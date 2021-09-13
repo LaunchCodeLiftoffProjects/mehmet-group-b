@@ -125,7 +125,7 @@ public class AuthenticationController {
                 registerFormDTO.getPhoneNumber());
 
 
-        newUser.setTest(1);
+//        newUser.setTest(1);
         userRepository.save(newUser);
         setUserInSession(request.getSession(), newUser);
 
