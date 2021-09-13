@@ -5,8 +5,8 @@
 <header th:replace="fragments::header"></header>
 
 
-<div> <!-- search filter-->
-    <form method="get">
+<div class="container"> <!-- search filter-->
+    <form method="get" class="mb-3">
         <label>State: </label>
         <th:block th:each="state:${states}">
 
@@ -47,88 +47,88 @@
         <button type="submit">Filter</button>
     </form>
 
-</div>
-<div>
-    <table class="table table-bordered">
-        <thead class="thead-dark">
-        <tr>
-            <th>Name</th>
-            <th>Location</th>
-            <th>Schedule</th>
+    <div class="row">
+        <table class="table table-bordered">
+            <thead class="thead-dark">
+            <tr>
+                <th>Name</th>
+                <th>Location</th>
+                <th>Schedule</th>
 
-        </tr>
-        <!--        <th:block>-->
-        <!--            <tr th:each="therapist: ${therapists}">-->
-        <!--                <td th:text = "${therapist.firstName}">-->
-        <!--                </td>-->
-        <!--                <td th:text="${therapist.therapist.user.firstName}"></td>-->
-        <!--                <td th:text="${therapist.therapist.user.lastName}"></td>-->
-        <!--                <td>-->
-        <!--                    <form>-->
-        <!--                    <button type="submit" th:value="${user}"></button>-->
+            </tr>
+            <!--        <th:block>-->
+            <!--            <tr th:each="therapist: ${therapists}">-->
+            <!--                <td th:text = "${therapist.firstName}">-->
+            <!--                </td>-->
+            <!--                <td th:text="${therapist.therapist.user.firstName}"></td>-->
+            <!--                <td th:text="${therapist.therapist.user.lastName}"></td>-->
+            <!--                <td>-->
+            <!--                    <form>-->
+            <!--                    <button type="submit" th:value="${user}"></button>-->
 
-        <!--                    </form>-->
-        <!--                </td>-->
-        <!--            </tr>-->
-        <!--        </th:block>-->
-        </thead>
-        <tbody>
+            <!--                    </form>-->
+            <!--                </td>-->
+            <!--            </tr>-->
+            <!--        </th:block>-->
+            </thead>
+            <tbody>
 
-        <th:block th:if="${user} == null">
-            <form method="post">
+            <th:block th:if="${user} == null">
+                <form method="post">
+                    <th:block th:each="therapist : ${therapists}">
+                        <th:block
+                                th:if="${therapist.therapist} != null">
+                            <tr>
+                                <td th:text="${therapist.firstName}+' '+${therapist.lastName}"></td>
+                                <td th:text="${therapist.city}+', '+${therapist.state}"></td>
+                                <td>
+
+                                    <form action="/login">
+                                        <button
+                                                type="submit"
+                                                name="therapistId"
+                                                th:text="'Login to Schedule'"
+                                        >
+
+                                        </button>
+                                    </form>
+                                </td>
+
+
+                            </tr>
+                        </th:block>
+                    </th:block>
+                </form>
+            </th:block>
+
+            <th:block th:unless="${user} == null">
                 <th:block th:each="therapist : ${therapists}">
                     <th:block
-                            th:if="${therapist.therapist} != null">
+                            th:if="${therapist.therapist} != null and ${therapist.id} != ${user.id}">
                         <tr>
                             <td th:text="${therapist.firstName}+' '+${therapist.lastName}"></td>
                             <td th:text="${therapist.city}+', '+${therapist.state}"></td>
                             <td>
+                                <form method="post">
 
-                                <form action="/login">
-                                    <button
-                                            type="submit"
-                                            name="therapistId"
-                                            th:text="'Login to Schedule'"
+                                    <button type="submit"
+                                            th:name="test"
+
+                                            th:field="${therapist.id}"
+                                            th:value="${therapist.id}"
+                                            th:text="'Schedule ' + ${therapist.firstName} + ' now!'"
                                     >
 
                                     </button>
                                 </form>
                             </td>
-
-
                         </tr>
                     </th:block>
                 </th:block>
-            </form>
-        </th:block>
-
-        <th:block th:unless="${user} == null">
-            <th:block th:each="therapist : ${therapists}">
-                <th:block
-                        th:if="${therapist.therapist} != null and ${therapist.id} != ${user.id}">
-                    <tr>
-                        <td th:text="${therapist.firstName}+' '+${therapist.lastName}"></td>
-                        <td th:text="${therapist.city}+', '+${therapist.state}"></td>
-                        <td>
-                            <form method="post">
-
-                                <button type="submit"
-                                        th:name="test"
-
-                                        th:field="${therapist.id}"
-                                        th:value="${therapist.id}"
-                                        th:text="'Schedule ' + ${therapist.firstName} + ' now!'"
-                                >
-
-                                </button>
-                            </form>
-                        </td>
-                    </tr>
-                </th:block>
             </th:block>
-        </th:block>
-        </tbody>
-    </table>
+            </tbody>
+        </table>
+    </div>
 </div>
 </body>
 </html>
