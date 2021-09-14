@@ -18,6 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -124,7 +125,7 @@ public class AuthenticationController {
                 registerFormDTO.getPhoneNumber());
 
 
-        newUser.setTest(1);
+//        newUser.setTest(1);
         userRepository.save(newUser);
         setUserInSession(request.getSession(), newUser);
 
@@ -179,5 +180,23 @@ public class AuthenticationController {
     public String logout(HttpServletRequest request){
         request.getSession().invalidate();
         return "redirect:/login";
+    }
+
+    @RequestMapping(value="/cities", method = RequestMethod.GET)
+    public @ResponseBody
+    ArrayList<String> findCitiesInState(@RequestParam(value="selectedState")String selectedState){
+        State selectedStateFilter = new State();
+        for (State state:stateRepository.findAll()
+        ) {
+            if(selectedState.equals(state.getState())){
+                selectedStateFilter = state;
+            }
+        }
+        ArrayList <String> citiesFromSelectedState = new ArrayList<String>();
+        for (City city: selectedStateFilter.getCities()
+        ) {
+            citiesFromSelectedState.add(city.getCity());
+        }
+        return citiesFromSelectedState;
     }
 }

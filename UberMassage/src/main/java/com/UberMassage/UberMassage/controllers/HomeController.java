@@ -78,10 +78,10 @@ public class HomeController {
 //        cityRepository.save(StJoseph);
 //        cityRepository.save(StLouis);
 
-//    for (int i = 6; i <= 23; i++) {
+//    for (int i = 36; i < 45; i++) {
 //        Optional<City> cityresult = cityRepository.findById(i);
 //        City acity = cityresult.get();
-//        Optional<State> stateresult = stateRepository.findById(24);
+//        Optional<State> stateresult = stateRepository.findById(35);
 //        State astate = stateresult.get();
 //
 //        acity.setState(astate);

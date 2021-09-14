@@ -3,8 +3,17 @@
 <head th:replace="fragments::head"></head>
 <body>
 <header th:replace="fragments::header"></header>
-<h1 th:text="'your time is between'+${therapist.therapist.hoursOfOperation.startConverted} +${therapist.therapist.hoursOfOperation.finishConverted}"></h1>
-<h1 th:text="'your appointment is with '+${therapist.firstName}"></h1>
+<h3 th:text="'Your appointment is with '+${therapist.firstName}"></h3>
+<h3
+        th:text="'Your time is between '+${therapist.therapist.hoursOfOperation.startConverted} + ' and ' + ${therapist.therapist.hoursOfOperation.finishConverted}"></h3>
+
+
+<form method="post">
+    <button type="submit" name="therapistId"
+           th:text="'Confirm appointment with ' + ${therapist.firstName}"
+            th:value="${therapist.id}">
+    </button>
+</form>
 
 </body>
 </html>
