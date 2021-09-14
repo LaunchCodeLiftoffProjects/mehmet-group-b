@@ -47,6 +47,12 @@
     <p th:text="${user.appointment.getTherapist().getFirstName()}"></p>
 </div>
 
+<form method="post">
+    <input type="submit" th:text="'Delete appointment?'"
+           th:name="appointmentId" th:value="${user.appointment.id}">
+
+</form>
+
 
 
 </body>
