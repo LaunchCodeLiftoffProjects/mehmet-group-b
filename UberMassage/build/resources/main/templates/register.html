@@ -88,15 +88,15 @@
 $(document).ready(
  $('#selectState').change(
         function(){
-        $.getJSON("/cities",{
-        selectedState: $(this).val(),
-        ajax: 'true'
-        }, function(data){
-            let html = '';
-                for(let i = 0; i < data.length ; i++){
-                    html += '<option value="' +data[i]+ '">' +data[i]+ '</option>'
-                    };
-            $('#selectCity').html(html);
+            $.getJSON("/cities",{
+            selectedState: $(this).val(),
+            ajax: 'true'
+            }, function(data){
+                let html = '';
+                    for(let i = 0; i < data.length ; i++){
+                        html += '<option value="' +data[i]+ '">' +data[i]+ '</option>'
+                        };
+                $('#selectCity').html(html);
             }
         )}
 ));
