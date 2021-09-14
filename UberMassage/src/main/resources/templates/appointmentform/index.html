@@ -9,6 +9,9 @@
 
 
 <form method="post">
+    <select>
+        <option th:each ></option>
+    </select>
     <button type="submit" name="therapistId"
            th:text="'Confirm appointment with ' + ${therapist.firstName}"
             th:value="${therapist.id}">
