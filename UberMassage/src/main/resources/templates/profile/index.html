@@ -11,7 +11,7 @@
 <!--        }-->
     </style>
     <main role="main" class="container">
-        
+
         <strong>First name</strong>
         <p th:text="${user.firstName}"></p>
         <strong>Last name</strong>
@@ -55,6 +55,14 @@
             <p th:text="${user.appointment.getTherapist().getFirstName()}"></p>
         </div>
     </main>
+
+<form method="post">
+    <input type="submit" th:text="'Delete appointment?'"
+           th:name="appointmentId" th:value="${user.appointment.id}">
+
+</form>
+
+
 
 </body>
 </html>
