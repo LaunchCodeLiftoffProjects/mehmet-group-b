@@ -3,9 +3,7 @@ package com.UberMassage.UberMassage.models;
 public enum Gender {
     MALE("Male"),
     FEMALE("Female"),
-    OTHER("Other"),
-    APACHEATTACKHELICOPTER("Apache Attack Helicopter"),
-    SPACE("Space");
+    NONBINARY("Non-binary");
 
     private final String gender;
 

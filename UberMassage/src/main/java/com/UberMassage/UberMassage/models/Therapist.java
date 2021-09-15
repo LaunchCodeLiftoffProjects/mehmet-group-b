@@ -24,6 +24,8 @@ public class Therapist {
 
     private Hours hoursOfOperation;
 
+    private String pickedHour;
+
     private Gender gender;
 
     public Therapist() {

@@ -2,6 +2,7 @@ package com.UberMassage.UberMassage.controllers;
 
 import com.UberMassage.UberMassage.data.AppointmentRepository;
 import com.UberMassage.UberMassage.data.UserRepository;
+import com.UberMassage.UberMassage.models.Appointment;
 import com.UberMassage.UberMassage.models.User;
 import com.UberMassage.UberMassage.models.dto.LoginFormDTO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,9 +63,13 @@ public class ProfileController {
 
         model.addAttribute("user", theUser);
 
-        appointmentRepository.deleteById(appointmentId);
+        Appointment deleteAppointment =
+                appointmentRepository.findById(appointmentId).orElse(new Appointment());
 
-        System.out.println(theUser.getAppointment().getId());
+        deleteAppointment.getClient().setAppointment(null);
+        deleteAppointment.getTherapist().setAppointment(null);
+
+        appointmentRepository.deleteById(appointmentId);
 
         return "profile/index";
     }
