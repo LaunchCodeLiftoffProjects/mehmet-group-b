@@ -61,7 +61,7 @@ ThereapistSignupController {
         model.addAttribute("title", "This is just a test");
 
 
-        return "therapistsignup/index";
+        return "profile/index";
     }
 
     @PostMapping()
@@ -93,7 +93,7 @@ ThereapistSignupController {
         userRepository.save(newUser);
 
 
-        return "redirect:";
+        return "redirect:/profile";
     }
 
 }

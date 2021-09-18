@@ -69,18 +69,16 @@ public class AppointmentController {
     @PostMapping("/{therapistId}")
     public String handleAppointmentPage(Model model,
                                         HttpServletRequest request,
-                                        @RequestParam int therapistId
-//                                        ,@ModelAttribute @Valid Appointment
-//                                        appointment
+                                        @RequestParam int therapistId,
+                                        @RequestParam(value="pickedTime") int pickedTime
     ) {
-        model.addAttribute("title", "YoBo");
 
         User theUser = getUserFromSession(request.getSession());
 
         User therapist = userRepository.findById(therapistId).orElse(new User());
 
         Appointment newAppointment = new Appointment(therapist,
-                theUser);
+                theUser, pickedTime);
 
         theUser.setAppointment(newAppointment);
         therapist.setAppointment(newAppointment);
