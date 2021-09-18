@@ -11,7 +11,7 @@
 <!--        }-->
     </style>
     <main role="main" class="container">
-        
+
         <strong>First name</strong>
         <p th:text="${user.firstName}"></p>
         <strong>Last name</strong>
@@ -31,7 +31,7 @@
             <br>
             <br>
             <strong>Your Gender</strong>
-            <p th:text="${user.therapist.gender}"></p>
+            <p th:text="${user.therapist.gender.getGender()}"></p>
             <strong>Your Hours</strong>
             <p th:text="${user.therapist.hoursOfOperation.startConverted()}"></p>
             <strong>Your Stop Time</strong>
@@ -53,8 +53,34 @@
 
         <div th:if="${user.appointment} != null">
             <p th:text="${user.appointment.getTherapist().getFirstName()}"></p>
+            <table>
+                <tr>
+                    <td>
+                    <p th:text="'Your appointment with ' + ${user.appointment.getTherapist().getFirstName()} + ' is at '"></p>
+                        <strong th:text="${user.appointment.timeConverter()}"></strong>
+                    </td>
+                </tr>
+                <tr>
+
+                </tr>
+            </table>
+
+
+
+
+            <form method="post">
+                <button type="submit" th:text="'Delete appointment?'"
+                       th:name="appointmentId" th:value="${user.appointment.id}">
+                </button>
+
+            </form>
+
         </div>
     </main>
+
+
+
+
 
 </body>
 </html>

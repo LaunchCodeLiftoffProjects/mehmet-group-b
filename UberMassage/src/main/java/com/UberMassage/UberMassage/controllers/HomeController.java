@@ -90,4 +90,9 @@ public class HomeController {
 
         return "index";
     }
+
+    @GetMapping("aboutus")
+    public String displayAbootus() {
+        return "aboutus";
+    }
 }

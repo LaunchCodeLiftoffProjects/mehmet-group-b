@@ -1,16 +1,15 @@
 package com.UberMassage.UberMassage.controllers;
 
+import com.UberMassage.UberMassage.data.AppointmentRepository;
 import com.UberMassage.UberMassage.data.UserRepository;
+import com.UberMassage.UberMassage.models.Appointment;
 import com.UberMassage.UberMassage.models.User;
 import com.UberMassage.UberMassage.models.dto.LoginFormDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -24,6 +23,8 @@ public class ProfileController {
     @Autowired
     UserRepository userRepository;
 
+    @Autowired
+    AppointmentRepository appointmentRepository;
 
     @GetMapping("/{userId}")
     public String displayProfile(Model model, @PathVariable int userId, HttpServletRequest request) {
@@ -53,6 +54,24 @@ public class ProfileController {
 
         return "redirect:profile/" + theUser.getId() ;
 
+    }
+
+    @PostMapping("/{userId}")
+    public String deleteAppointment(HttpServletRequest request,
+                                    @RequestParam(required = false) int appointmentId, Model model) {
+        User theUser = getUserFromSession(request.getSession());
+
+        model.addAttribute("user", theUser);
+
+        Appointment deleteAppointment =
+                appointmentRepository.findById(appointmentId).orElse(new Appointment());
+
+        deleteAppointment.getClient().setAppointment(null);
+        deleteAppointment.getTherapist().setAppointment(null);
+
+        appointmentRepository.deleteById(appointmentId);
+
+        return "profile/index";
     }
 
     private static final String userSessionKey = "user";
