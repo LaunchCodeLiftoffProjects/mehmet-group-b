@@ -53,6 +53,20 @@
 
         <div th:if="${user.appointment} != null">
             <p th:text="${user.appointment.getTherapist().getFirstName()}"></p>
+            <table>
+                <tr>
+                    <td>
+                    <p th:text="'Your appointment with ' + ${user.appointment.getTherapist().getFirstName()} + ' is at '"></p>
+                        <strong th:text="${user.appointment.timeConverter()}"></strong>
+                    </td>
+                </tr>
+                <tr>
+
+                </tr>
+            </table>
+
+
+
 
             <form method="post">
                 <button type="submit" th:text="'Delete appointment?'"
@@ -65,12 +79,6 @@
     </main>
 
 
-
-<form method="post">
-    <input type="submit" th:text="'Delete appointment?'"
-           th:name="appointmentId" th:value="${user.appointment.id}">
-
-</form>
 
 
 
