@@ -58,7 +58,7 @@ ThereapistSignupController {
 
         model.addAttribute("hours", new Hours());
         model.addAttribute("therapist", new TherapistRegisterFormDTO());
-        model.addAttribute("title", "This is just a test");
+        model.addAttribute("title", "Become A Therapist");
 
 
         return "therapistsignup/index";
@@ -93,7 +93,7 @@ ThereapistSignupController {
         userRepository.save(newUser);
 
 
-        return "redirect:";
+        return "redirect:/profile";
     }
 
 }

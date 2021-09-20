@@ -7,10 +7,11 @@
 <h3
         th:text="'Your time is between '+${therapist.therapist.hoursOfOperation.startConverted} + ' and ' + ${therapist.therapist.hoursOfOperation.finishConverted}"></h3>
 
-
 <form method="post">
-    <select>
-        <option th:each ></option>
+    <select th:name="pickedTime">
+        <option
+                th:each="i : ${#numbers.sequence(therapist.therapist.hoursOfOperation.startTime, therapist.therapist.hoursOfOperation.finishTime)}"
+                th:value="${i}" th:text="${i}"></option>
     </select>
     <button type="submit" name="therapistId"
            th:text="'Confirm appointment with ' + ${therapist.firstName}"
