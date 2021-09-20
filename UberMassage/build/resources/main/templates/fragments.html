@@ -15,13 +15,9 @@
     <link rel="stylesheet" th:href="@{/styles/main.css}">
 </head>
 <body>
-<header class="text-center" th:fragment="header">
-    <div class="container">
-        <h1 th:text="${title}">REPLACE</h1>
-
-
-        <nav>
-            <ul class ="nav h4">
+    <header th:fragment="header">
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4 sticky-top">
+            <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
                     <a class="nav-link" th:href="@{/schedule}">
                         Schedule</a>
@@ -45,10 +41,10 @@
                         Logout</a>
                 </li>
             </ul>
-
         </nav>
-    </div>
-</header>
+        <h1 th:text="${title}">REPLACE</h1>
+    </header>
+
 
 </body>
 </html>

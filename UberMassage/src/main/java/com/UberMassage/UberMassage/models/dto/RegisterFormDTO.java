@@ -1,7 +1,9 @@
 package com.UberMassage.UberMassage.models.dto;
 
 import com.UberMassage.UberMassage.models.Appointment;
+import org.springframework.format.annotation.NumberFormat;
 
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
@@ -9,19 +11,16 @@ public class RegisterFormDTO extends LoginFormDTO{
 
     private String verifyPassword;
 
-
+    @NotBlank
     private String firstName;
+    @NotBlank
     private String lastName;
 
     private String phoneNumber;
+    @Email
     private String email;
 
-    @NotBlank(message = "have to have state")
-    @NotNull(message = "state can't be null")
     private String state;
-    
-    @NotBlank(message = "have to have city")
-    @NotBlank(message = "city can't be null")
     private String city;
 
     private Appointment appointment;

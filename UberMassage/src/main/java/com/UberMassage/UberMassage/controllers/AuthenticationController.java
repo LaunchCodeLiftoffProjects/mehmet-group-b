@@ -182,6 +182,8 @@ public class AuthenticationController {
         return "redirect:/login";
     }
 
+
+    //getting JSON list for city drop down on register form
     @RequestMapping(value="/cities", method = RequestMethod.GET)
     public @ResponseBody
     ArrayList<String> findCitiesInState(@RequestParam(value="selectedState")String selectedState){

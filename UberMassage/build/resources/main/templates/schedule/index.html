@@ -57,25 +57,11 @@
             <th>Schedule</th>
 
         </tr>
-        <!--        <th:block>-->
-        <!--            <tr th:each="therapist: ${therapists}">-->
-        <!--                <td th:text = "${therapist.firstName}">-->
-        <!--                </td>-->
-        <!--                <td th:text="${therapist.therapist.user.firstName}"></td>-->
-        <!--                <td th:text="${therapist.therapist.user.lastName}"></td>-->
-        <!--                <td>-->
-        <!--                    <form>-->
-        <!--                    <button type="submit" th:value="${user}"></button>-->
 
-        <!--                    </form>-->
-        <!--                </td>-->
-        <!--            </tr>-->
-        <!--        </th:block>-->
         </thead>
         <tbody>
 
         <th:block th:if="${user} == null">
-
                 <th:block th:each="therapist : ${therapists}">
                     <th:block
                             th:if="${therapist.therapist} != null">
@@ -83,20 +69,15 @@
                             <td th:text="${therapist.firstName}+' '+${therapist.lastName}"></td>
                             <td th:text="${therapist.city}+', '+${therapist.state}"></td>
                             <td>
-
                                 <form action="/login">
                                     <button type="submit"
-                                            th:text="'Login to Schedule'"
-                                    >
+                                            th:text="'Login to Schedule'">
                                     </button>
                                 </form>
                             </td>
-
-
                         </tr>
                     </th:block>
                 </th:block>
-
         </th:block>
 
 

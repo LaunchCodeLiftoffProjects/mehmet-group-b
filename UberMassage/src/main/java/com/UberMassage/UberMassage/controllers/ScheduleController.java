@@ -56,7 +56,7 @@ public class ScheduleController {
 
         User theUser = getUserFromSession(request.getSession());
 
-        model.addAttribute("title", "This is schedule");
+        model.addAttribute("title", "This is schedule!!!");
         model.addAttribute("user", theUser);
         model.addAttribute("states",stateRepository.findAll());
         model.addAttribute("searchState",searchState);
