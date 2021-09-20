@@ -68,19 +68,26 @@
 
 
 
-            <form method="post">
-                <button type="submit" th:text="'Delete appointment?'"
+            <form method="post" data-confirm="Are you sure you want to cancel your appointment?">
+                <button id="deleteBtn" type="submit"  th:text="'Cancel appointment?'"
                        th:name="appointmentId" th:value="${user.appointment.id}">
                 </button>
 
             </form>
-
         </div>
     </main>
 
 
 
 
-
+<!--    //for alert box confirming appointment cancellation-->
+        <script type="text/javascript">
+        $(document).on('submit', 'form[data-confirm]', function(e){
+            if(!confirm($(this).data('confirm'))){
+                e.stopImmediatePropagation();
+                e.preventDefault();
+            }
+        });
+        </script>
 </body>
 </html>
