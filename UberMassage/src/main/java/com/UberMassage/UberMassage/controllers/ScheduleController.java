@@ -56,7 +56,7 @@ public class ScheduleController {
 
         User theUser = getUserFromSession(request.getSession());
 
-        model.addAttribute("title", "This is schedule!!!");
+        model.addAttribute("title", "Find A Therapist");
         model.addAttribute("user", theUser);
         model.addAttribute("states",stateRepository.findAll());
         model.addAttribute("searchState",searchState);
@@ -114,7 +114,7 @@ public class ScheduleController {
                                @RequestParam(value="test") int therapistId,
                                Model model) {
         User theUser = getUserFromSession(request.getSession());
-        model.addAttribute("title", "This is schedule");
+//        model.addAttribute("title", "This is schedule");
         model.addAttribute("therapists", userRepository.findAll());
         model.addAttribute("user", theUser);
 
