@@ -58,10 +58,10 @@ ThereapistSignupController {
 
         model.addAttribute("hours", new Hours());
         model.addAttribute("therapist", new TherapistRegisterFormDTO());
-        model.addAttribute("title", "This is just a test");
+        model.addAttribute("title", "Become A Therapist");
 
 
-        return "profile/index";
+        return "therapistsignup/index";
     }
 
     @PostMapping()

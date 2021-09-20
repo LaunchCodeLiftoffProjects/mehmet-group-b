@@ -29,7 +29,7 @@ public class ProfileController {
     @GetMapping("/{userId}")
     public String displayProfile(Model model, @PathVariable int userId, HttpServletRequest request) {
         User theUser = getUserFromSession(request.getSession());
-        model.addAttribute("title", "This is profile");
+        model.addAttribute("title", "Welcome " + theUser.getFirstName());
         model.addAttribute("user",theUser);
 
         Optional optUser = userRepository.findById(userId);
@@ -71,7 +71,7 @@ public class ProfileController {
 
         appointmentRepository.deleteById(appointmentId);
 
-        return "profile/index";
+        return "therapistsignup/index";
     }
 
     private static final String userSessionKey = "user";
