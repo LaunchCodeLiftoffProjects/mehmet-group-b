@@ -71,7 +71,7 @@ public class ProfileController {
 
         appointmentRepository.deleteById(appointmentId);
 
-        return "therapistsignup/index";
+        return "profile/index";
     }
 
     private static final String userSessionKey = "user";
