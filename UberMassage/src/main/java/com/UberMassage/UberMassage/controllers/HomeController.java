@@ -48,7 +48,7 @@ public class HomeController {
     public String displayHomepage(@ModelAttribute State newState,Model model, HttpServletRequest request) {
         User theUser = getUserFromSession(request.getSession());
 
-        model.addAttribute("title", "Hello World");
+        model.addAttribute("title", "Welcome to UberMassage");
         model.addAttribute("user", theUser);
 
 //        State Missouri = new State("MO");
