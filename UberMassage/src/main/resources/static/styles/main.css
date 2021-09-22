@@ -26,30 +26,22 @@ body {
 }
 
 button {
-	box-shadow: 0px 0px 0px 0px #9fb4f2;
 	background-color:#5F9CF4;
 	border-radius:20px;
-	border:0px solid #4e6096;
+	border: none;
 	display:inline-block;
-
 	color:black;
-	font-family:Arial;
 	font-size:15px;
 	padding:7px 15px;
-	text-decoration:none;
 	margin: 3px;
-	transition: 1s;
+	transition: .4s;
 
 }
 button:hover {
-	background:linear-gradient(to bottom, #5F8CF5 5%, #7892c2 100%);
-	background-color:#476e9e;
+	background-color:#abc7f7;
 
 }
-button:active {
-	position:relative;
-	top:1px;
-}
+
 
 .clipart{
     width: 200px;
@@ -76,6 +68,7 @@ footer {
 
 .footerA{
     color:black;
+    transition: .3s;
 }
 .footerA:hover{
     color:#AAD8D3;
@@ -83,6 +76,13 @@ footer {
 
 .homeBackground{
 
+}
+
+.imgBackground{
+    position: absolute;
+    height: 100%;
+    top: 0px;
+    opacity: 60%;
 }
 
 .intro{
