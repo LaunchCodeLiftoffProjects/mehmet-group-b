@@ -2,16 +2,18 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments::head"></head>
 <body>
+<div class="content-wrap">
     <header th:replace="fragments::header"></header>
     <style th:inline="text">
-<!--        body {-->
-<!--            background: url([[@{/images/Background.jpg}]]);-->
-<!--                   no-repeat center center fixed;-->
-<!--            background-size: cover;-->
-<!--        }-->
+        body {
+            background: url([[@{/images/Background1.jpg}]]);
+                   no-repeat center center fixed;
+            background-size: cover;
+                       }
     </style>
-    <main role="main" class="container">
-
+    <main role="" class="" id="main">
+        <h1 th:text="'Welcome '+ ${user.firstName} + '!'"></h1>
+        <br>
         <strong>First name</strong>
         <p th:text="${user.firstName}"></p>
         <strong>Last name</strong>
@@ -29,7 +31,7 @@
 
         <div th:if="${user.therapist} != null">
             <br>
-            <br>
+            <h3>Therapist Info:</h3>
             <strong>Your Gender</strong>
             <p th:text="${user.therapist.gender.getGender()}"></p>
             <strong>Your Hours</strong>
@@ -49,15 +51,17 @@
                 Yes</a>
         </div>
 
-        <strong>Appointment?</strong>
+    </main>
 
-        <div th:if="${user.appointment} != null">
-            <p th:text="${user.appointment.getTherapist().getFirstName()}"></p>
+
+        <div th:if="${user.appointment} != null" id="appointment">
+            <strong>Upcoming Appointment: </strong>
+<!--            <p th:text="${user.appointment.getTherapist().getFirstName()}"></p>-->
             <table>
                 <tr>
                     <td>
-                    <p th:text="'Your appointment with ' + ${user.appointment.getTherapist().getFirstName()} + ' is at '"></p>
-                        <strong th:text="${user.appointment.timeConverter()}"></strong>
+                    <p th:text="'Therapist: ' + ${user.appointment.getTherapist().getFirstName()} + ' '+ ${user.appointment.getTherapist().getLastName()}"></p>
+                        <span>Time: <strong th:text="${user.appointment.timeConverter()}"></strong></span>
                     </td>
                 </tr>
                 <tr>
@@ -65,9 +69,7 @@
                 </tr>
             </table>
 
-
-
-
+            <br>
             <form method="post" data-confirm="Are you sure you want to cancel your appointment?">
                 <button id="deleteBtn" type="submit"  th:text="'Cancel appointment?'"
                        th:name="appointmentId" th:value="${user.appointment.id}">
@@ -75,20 +77,28 @@
 
             </form>
         </div>
-    </main>
 
 
 
+    <div th:if="${user.appointment} == null" id="noAppointment" style="position: relative; bottom: 20px;">
+            <strong>You have no upcoming appointments.</strong>
+            <form action="/schedule">
+                <button>Find a Therapist</button>
+            </form>
 
+        </div>
 
+</div>
+    <footer th:replace="fragments::newFooter" ></footer>
+
+<!--    //for alert box confirming appointment cancellation-->
         <script type="text/javascript">
-
         $(document).on('submit', 'form[data-confirm]', function(e){
             if(!confirm($(this).data('confirm'))){
                 e.stopImmediatePropagation();
                 e.preventDefault();
             }
-});
+        });
         </script>
 </body>
 </html>

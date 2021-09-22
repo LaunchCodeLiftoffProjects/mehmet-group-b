@@ -2,8 +2,11 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments::head"></head>
 <body>
-<header th:replace="fragments::header"></header>
 
+<div class="content-wrap">
+
+<header th:replace="fragments::header"></header>
+<h1>Therapist Signup</h1>
 <form method="post" th:obeject="${therapist}">
     <div class="form-group">
         <label>Gender
@@ -46,6 +49,8 @@
     <input type="submit" class="btn btn-primary" value="Register" />
 </form>
 
+</div>
 
+<footer th:replace="fragments::newFooter" ></footer>
 </body>
 </html>

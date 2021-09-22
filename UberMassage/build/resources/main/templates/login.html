@@ -2,7 +2,10 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head th:replace="fragments :: head"></head>
 <body>
+
+<div class="content-wrap">
 <header th:replace="fragments :: header"></header>
+    <h1 style="left: 5rem; position: relative;">Log In</h1>
 <main role="main" class="container">
     <form method="post">
         <div class="form-group">
@@ -25,6 +28,9 @@
 
 </main>
 
+</div>
+
+<footer th:replace="fragments::newFooter" ></footer>
 
 </body>
 </html>
