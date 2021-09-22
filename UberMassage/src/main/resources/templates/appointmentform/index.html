@@ -2,10 +2,12 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments::head"></head>
 <body>
+<div class="content-wrap">
 <header th:replace="fragments::header"></header>
+    <h1>Your relaxation is just around the corner.</h1>
 <h3 th:text="'Your appointment is with '+${therapist.firstName}"></h3>
-<h3
-        th:text="'Your time is between '+${therapist.therapist.hoursOfOperation.startConverted} + ' and ' + ${therapist.therapist.hoursOfOperation.finishConverted}"></h3>
+<h5
+        th:text="'Please choose a time between '+${therapist.therapist.hoursOfOperation.startConverted} + ' and ' + ${therapist.therapist.hoursOfOperation.finishConverted}"></h5>
 
 <form method="post">
     <select th:name="pickedTime">
@@ -18,6 +20,10 @@
             th:value="${therapist.id}">
     </button>
 </form>
+
+
+</div>
+<footer th:replace="fragments::newFooter" ></footer>
 
 </body>
 </html>

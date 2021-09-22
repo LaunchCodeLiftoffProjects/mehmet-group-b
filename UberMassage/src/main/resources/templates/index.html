@@ -2,9 +2,54 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments::head"></head>
 <body>
+<div class="content-wrap">
 <header th:replace="fragments::header"></header>
-<footer th:replace="fragments::footer" ></footer>
 
+<div class="titleImg"><img class="" src="../images/titleLogo.jpg" alt="title logo" style="width: 100%;"></div>
+
+
+<div class="intro">
+
+        <img class="homeBackground" src="../images/homeBackground1.jpg" alt="Background" style="width: 100%; opacity:50%;">
+    
+    <div id="introContent">
+        <h2 id="">Bringing a relaxing massage to wherever you are, whenever you are. (Or something way better because you guys are better at writing stuff.)</h2>
+        
+        <form action="/register">
+            <button class="introBtn">Sign Up!</button>
+        </form>
+    </div>
+    
+</div>
+
+<div class="overview">
+    <div class="overviewDetails">
+        <h2 class="overviewH">Find a qualified massage therapist in your area.</h2>
+        <img class="clipart" src="../images/findTherapistClipart.png">
+    </div>
+
+    <div class="overviewDetails">
+        <img class="clipart" src="../images/scheduleFast.png">
+
+        <h2 class="overviewH" style="width: 65%; bottom:-45px;">Schedule a massage with your preferred therapist immediately</h2>
+
+
+    </div>
+    
+    <div class="overviewDetails">
+        <h2 class="overviewH">Licenced therapists can sign up to earn income!</h2>
+        <img class="clipart" src="../images/earn.png">
+    </div>
+
+
+    <form action="/register">
+        <button class="introBtn">Sign Up Now!</button>
+    </form>
+</div>
+
+</div>
+
+<footer th:replace="fragments::newFooter" ></footer>
 
 </body>
 </html>

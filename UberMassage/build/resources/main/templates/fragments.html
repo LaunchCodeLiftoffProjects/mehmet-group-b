@@ -5,6 +5,11 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+
+<!--    for footer fonts-->
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+          integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+
     <title th:text="${title}">Inventory Application</title>
     <script
             src="https://code.jquery.com/jquery-3.6.0.min.js"
@@ -13,6 +18,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" th:href="@{/styles/main.css}">
+    <link rel="icon" href="../images/favicon.jpg">
+    <title th:text="${title}"></title>
 </head>
 <body>
     <header th:fragment="header">
@@ -42,7 +49,7 @@
                 </li>
             </ul>
         </nav>
-        <h1 class="title" th:text="${title}">REPLACE</h1>
+
     </header>
 
     <footer th:fragment="footer">
@@ -50,6 +57,19 @@
             About us!</a>
     </footer>
 
+    <footer th:fragment="newFooter">
+
+        <div class="" style="word-spacing: 10px;">
+
+            <a class="footerA" href=""><i class="boop fas fa-dumpster-fire"></i></a>
+            <a class="footerA" href="https://www.google.com/search?q=bread&safe=active&client=firefox-b-1-d&sxsrf=ALeKk018uWabFkpIFifseqv99pRDtJnoNQ:1602448448533&source=lnms&tbm=isch&sa=X&ved=2ahUKEwiAsq7Usa3sAhVrUd8KHR_1A7wQ_AUoAnoECDUQBA&biw=1366&bih=693"><i class="boop fas fa-bread-slice"></i></a>
+            <a class="footerA" href="#"><i class="boop fas fa-kiwi-bird"></i></a>
+            <a class="footerA" href="/aboutus"><i class="boop fas fa-toilet-paper"></i></a>
+        </div>
+
+        <p class="copyright">© 2021 Beard Bois</p>
+
+    </footer>
 
 </body>
 </html>

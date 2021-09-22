@@ -3,6 +3,8 @@
 <head th:replace="fragments :: head"></head>
 
 <body class="">
+<div class="content-wrap">
+
 <style>
         body {
             background: url([[@{/images/Background2.jpg}]]);
@@ -88,7 +90,8 @@
 
     <input type="submit" class="btn btn-primary" value="Register" />
 </form>
-
+</div>
+<footer th:replace="fragments::newFooter" ></footer>
 
 <!--for dynamically filling city drop down-->
 <script type="text/javascript">

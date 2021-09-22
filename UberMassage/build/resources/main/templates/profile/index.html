@@ -2,6 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments::head"></head>
 <body>
+<div class="content-wrap">
     <header th:replace="fragments::header"></header>
     <style th:inline="text">
         body {
@@ -79,13 +80,16 @@
 
 
 
-    <div th:if="${user.appointment} == null" id="noAppointment" style="position: relative">
+    <div th:if="${user.appointment} == null" id="noAppointment" style="position: relative; bottom: 20px;">
             <strong>You have no upcoming appointments.</strong>
+            <form action="/schedule">
+                <button>Find a Therapist</button>
+            </form>
 
         </div>
 
-
-
+</div>
+    <footer th:replace="fragments::newFooter" ></footer>
 
 <!--    //for alert box confirming appointment cancellation-->
         <script type="text/javascript">
