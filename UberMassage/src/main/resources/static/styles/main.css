@@ -1,5 +1,13 @@
 body {
 background: #e6eff2;
+
+}
+
+#main{
+padding: 1rem;
+margin: 0;
+background: #95a4f5;
+width: 300px;
 }
 
 footer {
