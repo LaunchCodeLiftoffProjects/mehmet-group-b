@@ -5,7 +5,7 @@
 <header th:replace="fragments::header"></header>
 
 
-<div> <!-- search filter-->
+<div id="scheduleFilter"> <!-- search filter-->
     <form method="get">
         <label>State: </label>
         <th:block th:each="state:${states}">

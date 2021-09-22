@@ -2,12 +2,19 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head th:replace="fragments :: head"></head>
 
-<body class="container">
-
+<body class="">
+<style>
+        body {
+            background: url([[@{/images/Background2.jpg}]]);
+                   no-repeat center center fixed;
+            background-size: cover;
+        }
+    </style>
 <header th:replace="fragments :: header"></header>
 
 
-<form method="post">
+<form id="main" method="post" style="padding:1.5rem 2.5rem ;">
+    <h1>Register</h1>
     <div class="form-group">
         <label>Username
             <input class="form-control" th:field="${registerFormDTO.username}" />

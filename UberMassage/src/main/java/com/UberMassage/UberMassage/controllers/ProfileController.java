@@ -29,7 +29,7 @@ public class ProfileController {
     @GetMapping("/{userId}")
     public String displayProfile(Model model, @PathVariable int userId, HttpServletRequest request) {
         User theUser = getUserFromSession(request.getSession());
-        model.addAttribute("title", "Welcome " + theUser.getFirstName());
+//        model.addAttribute("title", "Welcome " + theUser.getFirstName());
         model.addAttribute("user",theUser);
 
         Optional optUser = userRepository.findById(userId);

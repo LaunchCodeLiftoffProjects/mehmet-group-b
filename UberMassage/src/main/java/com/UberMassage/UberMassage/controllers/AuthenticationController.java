@@ -65,14 +65,7 @@ public class AuthenticationController {
         model.addAttribute(new RegisterFormDTO());
         model.addAttribute(new User());
 
-//        adding states to model
-//        ArrayList<String> states = new ArrayList<String>();
-//        for (State state:stateRepository.findAll()
-//             ) {
-//           String nextState = state.getState();
-//           states.add(nextState);
-//        }
-//        model.addAttribute("states",states);
+
         model.addAttribute("states",stateRepository.findAll());
 
 //        adding cities to model based on selected state
@@ -87,7 +80,7 @@ public class AuthenticationController {
         model.addAttribute("cities",cities);
 
 
-        model.addAttribute("title", "Register");
+//        model.addAttribute("title", "Register");
         return "register";
     }
 
@@ -97,7 +90,7 @@ public class AuthenticationController {
                                           Model model) {
 
         if (errors.hasErrors()) {
-            model.addAttribute("title", "Register");
+//            model.addAttribute("title", "Register");
             return "register";
         }
 
@@ -105,7 +98,7 @@ public class AuthenticationController {
 
         if (existingUser != null) {
             errors.rejectValue("username", "username.alreadyexists", "A user with that username already exists");
-            model.addAttribute("title", "Register");
+//            model.addAttribute("title", "Register");
             return "register";
         }
 
@@ -113,7 +106,7 @@ public class AuthenticationController {
         String verifyPassword = registerFormDTO.getVerifyPassword();
         if (!password.equals(verifyPassword)) {
             errors.rejectValue("password", "passwords.mismatch", "Passwords do not match");
-            model.addAttribute("title", "Register");
+//            model.addAttribute("title", "Register");
             return "register";
         }
 
