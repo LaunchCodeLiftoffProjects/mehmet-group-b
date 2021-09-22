@@ -5,14 +5,14 @@ margin: 0;
 
 }
 
-#appointment a, #noAppointment{
-position: absolute;
-display: inline-block;
-padding: 1rem;
-margin: 0 2rem;
-background: #95a4f5;
-border-radius: 10px;
-width: auto;
+#appointment, #noAppointment{
+    position: absolute;
+    display: inline-block;
+    padding: 1rem;
+    margin: 0 2rem;
+    background: #95a4f5;
+    border-radius: 10px;
+    width: auto;
 
 
 }
