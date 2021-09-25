@@ -2,6 +2,7 @@ package com.UberMassage.UberMassage.models;
 
 import javax.persistence.*;
 import java.util.HashMap;
+import java.util.List;
 
 @Entity
 public class Therapist {
@@ -12,19 +13,18 @@ public class Therapist {
     @GeneratedValue
     private int therapistId;
 
-    private String typeOfMassage;
+//    private String typeOfMassage;
+//
+//    private String citiesWillTravel;
 
-    private String citiesWillTravel;
+//    private double costOfService;
 
-    private double costOfService;
-
-    @OneToOne(cascade= CascadeType.ALL)
-    @JoinColumn(name = "appointment_id")
-    private Appointment appointment;
+    @OneToMany(cascade=CascadeType.ALL)
+    private List<Appointment> appointments;
 
     private Hours hoursOfOperation;
 
-    private String pickedHour;
+//    private String pickedHour;
 
     private Gender gender;
 
@@ -48,36 +48,42 @@ public class Therapist {
 //        this.gender = gender;
 //    }
 
-    public String getTypeOfMassage() {
-        return typeOfMassage;
+//    public String getTypeOfMassage() {
+//        return typeOfMassage;
+//    }
+//
+//    public void setTypeOfMassage(String typeOfMassage) {
+//        this.typeOfMassage = typeOfMassage;
+//    }
+//
+//    public String getCitiesWillTravel() {
+//        return citiesWillTravel;
+//    }
+//
+//    public void setCitiesWillTravel(String citiesWillTravel) {
+//        this.citiesWillTravel = citiesWillTravel;
+//    }
+//
+//    public double getCostOfService() {
+//        return costOfService;
+//    }
+//
+//    public void setCostOfService(double costOfService) {
+//        this.costOfService = costOfService;
+//    }
+
+    public List<Appointment> getAppointments() {
+        return appointments;
     }
 
-    public void setTypeOfMassage(String typeOfMassage) {
-        this.typeOfMassage = typeOfMassage;
+    public void setAppointments(
+            List<Appointment> appointments) {
+        this.appointments = appointments;
+
     }
 
-    public String getCitiesWillTravel() {
-        return citiesWillTravel;
-    }
-
-    public void setCitiesWillTravel(String citiesWillTravel) {
-        this.citiesWillTravel = citiesWillTravel;
-    }
-
-    public double getCostOfService() {
-        return costOfService;
-    }
-
-    public void setCostOfService(double costOfService) {
-        this.costOfService = costOfService;
-    }
-
-    public Appointment getAppointment() {
-        return appointment;
-    }
-
-    public void setAppointment(Appointment appointment) {
-        this.appointment = appointment;
+    public void addAppointment(Appointment appointment) {
+        this.appointments.add(appointment);
     }
 
     public Hours getHoursOfOperation() {

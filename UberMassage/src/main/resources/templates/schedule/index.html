@@ -56,7 +56,9 @@
         <tr>
             <th>Name</th>
             <th>Location</th>
+            <th>Gender</th>
             <th>Schedule</th>
+
 
         </tr>
 
@@ -70,6 +72,7 @@
                         <tr>
                             <td th:text="${therapist.firstName}+' '+${therapist.lastName}"></td>
                             <td th:text="${therapist.city}+', '+${therapist.state}"></td>
+                            <td></td>
                             <td>
                                 <form action="/login">
                                     <button type="submit"
@@ -90,6 +93,8 @@
                     <tr>
                         <td th:text="${therapist.firstName}+' '+${therapist.lastName}"></td>
                         <td th:text="${therapist.city}+', '+${therapist.state}"></td>
+                        <td
+                                th:text="${therapist.therapist.gender.getGender()}"></td>
                         <td>
                             <form method="post">
 

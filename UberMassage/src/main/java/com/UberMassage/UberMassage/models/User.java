@@ -2,10 +2,7 @@ package com.UberMassage.UberMassage.models;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -15,8 +12,7 @@ public class User extends AbstractEntity {
     @JoinColumn(name = "therapist_id")
     private Therapist therapist;
 
-    @OneToOne(cascade= CascadeType.ALL)
-    @JoinColumn(name = "appointment_id")
+    @ManyToOne
     private Appointment appointment;
 
     private int test = 1;

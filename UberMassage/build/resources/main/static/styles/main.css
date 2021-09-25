@@ -4,14 +4,7 @@ body {
     margin: 0;
     min-height: 100vh;
     position: relative;
-
-
-
-
-
 }
-
-
 
 #appointment, #noAppointment{
     position: absolute;
@@ -21,8 +14,6 @@ body {
     background: #AAD8D3;
     border-radius: 10px;
     width: auto;
-
-
 }
 
 button {
@@ -37,16 +28,14 @@ button {
 	transition: .4s;
 
 }
+
 button:hover {
 	background-color:#abc7f7;
-
 }
-
 
 .clipart{
     width: 200px;
     display: inline;
-
 }
 
 .content-wrap{
@@ -70,6 +59,7 @@ footer {
     color:black;
     transition: .3s;
 }
+
 .footerA:hover{
     color:#AAD8D3;
 }
@@ -88,15 +78,14 @@ footer {
 .intro{
    position: relative;
    width: 100%;
-   top:-24px
-
+   top:-24px;
 }
 
 .introBtn{
     font-size: 27px;
     border-radius: 40px;
     padding: 13px 35px;
-    margin: 20px
+    margin: 20px;
 }
 
 #introContent{
@@ -104,9 +93,6 @@ footer {
     margin: 0 20% 0 10%;
     bottom: 300px;
     font-weight: heavy;
-
-
-
 }
 
 #main{
@@ -118,11 +104,7 @@ footer {
     top: -24px;
     position:relative;
     display: inline-block;
-
 }
-
-
-
 
 #register{
     padding:2rem;
@@ -145,7 +127,6 @@ padding: 0 1rem 1rem;
     top: -24px;
     position:relative;
     display: inline-block;
-
 }
 
 .overview{
@@ -157,6 +138,7 @@ padding: 0 1rem 1rem;
 .overviewDetails{
     margin: 60px auto;
 }
+
 .overviewH{
     display: inline-block;
     position: relative;

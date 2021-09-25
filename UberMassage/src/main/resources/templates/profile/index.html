@@ -5,13 +5,9 @@
 <div class="content-wrap">
     <header th:replace="fragments::header"></header>
     <style th:inline="text">
-<!--        body {-->
-<!--            background: url([[@{/images/Background1.jpg}]]);-->
-<!--                   no-repeat center center fixed;-->
-<!--            background-size: cover;-->
-<!--                       }-->
+
     </style>
-    <img class="imgBackground" src="../images/Background1.jpg">
+    <img class="imgBackground" src="../images/Profile-Massage.jpg">
     <main role="" class="" id="main">
         <h1 th:text="'Welcome '+ ${user.firstName} + '!'"></h1>
         <br>
@@ -27,8 +23,6 @@
         <p th:text="${user.city}"></p>
         <strong>phone number</strong>
         <p th:text="${user.phoneNumber}"></p>
-<!--        <strong>Username</strong>-->
-<!--        <p th:text="${user.username}"></p>-->
 
         <div th:if="${user.therapist} != null">
             <br>
@@ -40,9 +34,18 @@
             <strong>Your Stop Time</strong>
             <p
                     th:text="${user.therapist.hoursOfOperation.finishConverted}"></p>
-
         </div>
 
+
+        <div th:if="${user.therapist.appointments.size()} != 0"
+             style="position: relative; top: 20px;">
+                <strong>Your Appointments for Today</strong>
+                <th:block
+                        th:each="i : ${#numbers.sequence(0, user.therapist.appointments.size() - 1)}">
+
+                    <p th:text="${user.therapist.appointments[i].getClient().getFirstName()}"></p>
+                </th:block>
+        </div>
 
         <div th:unless="${user.therapist} != null">
             <br>
@@ -57,7 +60,6 @@
 
         <div th:if="${user.appointment} != null" id="appointment">
             <strong>Upcoming Appointment: </strong>
-<!--            <p th:text="${user.appointment.getTherapist().getFirstName()}"></p>-->
             <table>
                 <tr>
                     <td>
