@@ -2,10 +2,12 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments::head"></head>
 <body>
+
+<div class="content-wrap">
 <header th:replace="fragments::header"></header>
 
-
-<div> <!-- search filter-->
+<h1>Find a Therapist</h1>
+<div id="scheduleFilter"> <!-- search filter-->
     <form method="get">
         <label>State: </label>
         <th:block th:each="state:${states}">
@@ -109,5 +111,8 @@
         </tbody>
     </table>
 </div>
+</div>
+<footer th:replace="fragments::newFooter" ></footer>
+
 </body>
 </html>

@@ -65,14 +65,7 @@ public class AuthenticationController {
         model.addAttribute(new RegisterFormDTO());
         model.addAttribute(new User());
 
-//        adding states to model
-//        ArrayList<String> states = new ArrayList<String>();
-//        for (State state:stateRepository.findAll()
-//             ) {
-//           String nextState = state.getState();
-//           states.add(nextState);
-//        }
-//        model.addAttribute("states",states);
+
         model.addAttribute("states",stateRepository.findAll());
 
 //        adding cities to model based on selected state
