@@ -81,7 +81,7 @@ public class AppointmentController {
                 theUser, pickedTime);
 
         theUser.setAppointment(newAppointment);
-        therapist.setAppointment(newAppointment);
+        therapist.getTherapist().addAppointment(newAppointment);
 
         appointmentRepository.save(newAppointment);
 
