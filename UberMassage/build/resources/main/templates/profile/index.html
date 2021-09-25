@@ -10,7 +10,7 @@
 <!--            background-size: cover;-->
 <!--        }-->
     </style>
-    <main role="main" class="container">
+    <main role="main" class="container" id="main">
 
         <strong>First name</strong>
         <p th:text="${user.firstName}"></p>
@@ -80,15 +80,14 @@
 
 
 
-
+<!--    //for alert box confirming appointment cancellation-->
         <script type="text/javascript">
-
         $(document).on('submit', 'form[data-confirm]', function(e){
             if(!confirm($(this).data('confirm'))){
                 e.stopImmediatePropagation();
                 e.preventDefault();
             }
-});
+        });
         </script>
 </body>
 </html>
