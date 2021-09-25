@@ -5,12 +5,13 @@
 <div class="content-wrap">
     <header th:replace="fragments::header"></header>
     <style th:inline="text">
-        body {
-            background: url([[@{/images/Background1.jpg}]]);
-                   no-repeat center center fixed;
-            background-size: cover;
-                       }
+<!--        body {-->
+<!--            background: url([[@{/images/Background1.jpg}]]);-->
+<!--                   no-repeat center center fixed;-->
+<!--            background-size: cover;-->
+<!--                       }-->
     </style>
+    <img class="imgBackground" src="../images/Background1.jpg">
     <main role="" class="" id="main">
         <h1 th:text="'Welcome '+ ${user.firstName} + '!'"></h1>
         <br>
