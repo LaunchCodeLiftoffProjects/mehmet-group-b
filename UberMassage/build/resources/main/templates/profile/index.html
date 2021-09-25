@@ -41,6 +41,17 @@
             <p
                     th:text="${user.therapist.hoursOfOperation.finishConverted}"></p>
 
+            <th:block
+                    th:if="${user.therapist.appointments.size()} != 0">
+                <strong>Your Appointments for Today</strong>
+                <th:block
+                        th:each="i : ${#numbers.sequence(0, user.therapist.appointments.size() - 1)}">
+
+                    <p
+                        th:text="${user.therapist.appointments[i].getClient().getFirstName()}"></p>
+                </th:block>
+            </th:block>
+
         </div>
 
 

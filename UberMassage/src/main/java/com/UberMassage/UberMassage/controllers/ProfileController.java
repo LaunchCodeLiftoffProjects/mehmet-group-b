@@ -36,6 +36,7 @@ public class ProfileController {
         if (optUser.isPresent()) {
             User user = (User) optUser.get();
             model.addAttribute("user", user);
+
             return "profile/index";
 
         } else {
