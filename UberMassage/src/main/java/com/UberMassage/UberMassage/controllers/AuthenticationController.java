@@ -89,6 +89,18 @@ public class AuthenticationController {
                                           Errors errors, HttpServletRequest request,
                                           Model model) {
 
+        model.addAttribute("states",stateRepository.findAll());
+//        adding cities to model based on selected state
+        ArrayList<String> cities = new ArrayList<>();
+        for (City city:cityRepository.findAll()
+        ) {
+//                if(stateId != null && city.getState().getId() == stateId){
+            String nextCity = city.getCity();
+            cities.add(nextCity);
+//            }
+        }
+        model.addAttribute("cities",cities);
+
         if (errors.hasErrors()) {
             model.addAttribute("title", "Register");
             return "register";
@@ -109,6 +121,8 @@ public class AuthenticationController {
             model.addAttribute("title", "Register");
             return "register";
         }
+
+
 
 
         User newUser = new User(registerFormDTO.getUsername(),

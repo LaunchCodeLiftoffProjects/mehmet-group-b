@@ -20,7 +20,9 @@ public class RegisterFormDTO extends LoginFormDTO{
     @Email
     private String email;
 
+    @NotNull
     private String state;
+    @NotNull
     private String city;
 
     private Appointment appointment;
