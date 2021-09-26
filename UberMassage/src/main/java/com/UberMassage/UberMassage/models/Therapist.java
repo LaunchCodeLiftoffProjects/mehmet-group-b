@@ -13,18 +13,10 @@ public class Therapist {
     @GeneratedValue
     private int therapistId;
 
-//    private String typeOfMassage;
-//
-//    private String citiesWillTravel;
-
-//    private double costOfService;
-
     @OneToMany(cascade=CascadeType.ALL)
     private List<Appointment> appointments;
 
     private Hours hoursOfOperation;
-
-//    private String pickedHour;
 
     private Gender gender;
 
@@ -38,39 +30,6 @@ public class Therapist {
         this.hoursOfOperation = hoursOfOperation;
 
     }
-
-//    public Therapist(User user, String typeOfMassage, double costOfService,
-//                     String gender) {
-//
-//        this.user = user;
-//        this.typeOfMassage = typeOfMassage;
-//        this.costOfService = costOfService;
-//        this.gender = gender;
-//    }
-
-//    public String getTypeOfMassage() {
-//        return typeOfMassage;
-//    }
-//
-//    public void setTypeOfMassage(String typeOfMassage) {
-//        this.typeOfMassage = typeOfMassage;
-//    }
-//
-//    public String getCitiesWillTravel() {
-//        return citiesWillTravel;
-//    }
-//
-//    public void setCitiesWillTravel(String citiesWillTravel) {
-//        this.citiesWillTravel = citiesWillTravel;
-//    }
-//
-//    public double getCostOfService() {
-//        return costOfService;
-//    }
-//
-//    public void setCostOfService(double costOfService) {
-//        this.costOfService = costOfService;
-//    }
 
     public List<Appointment> getAppointments() {
         return appointments;

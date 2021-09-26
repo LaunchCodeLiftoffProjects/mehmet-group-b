@@ -17,8 +17,6 @@ public class Appointment extends AbstractID {
 
     int pickedTime;
 
-
-
     public Appointment() {};
 
     public Appointment(User therapist, User client, int pickedTime) {
