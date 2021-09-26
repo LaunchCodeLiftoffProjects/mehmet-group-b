@@ -14,7 +14,21 @@ the ability to fix and adjust their schedule to their preferences. Their is a sc
 * Use of military time for ease of access to any international clientele.
 
 # Project Presentation
+Home Page
 
+![Home Page - 1](https://user-images.githubusercontent.com/18252560/134825537-1c86dfc6-1eb7-429e-821a-c5b5774a9eea.png)
+
+Register Page
+
+![Register Page - 3](https://user-images.githubusercontent.com/18252560/134825546-1d8d8e91-93fd-496a-a930-ca3648520fc1.png)
+
+Schedule Page
+
+![Schedule Page - 2](https://user-images.githubusercontent.com/18252560/134825552-a7fdf281-b447-44e4-8c80-1df7831e7b29.png)
+
+Profile Page
+
+![Profile Pic - 1](https://user-images.githubusercontent.com/18252560/134825557-f3fda5c0-1744-42b4-b3ee-82a8174e747e.png)
 
 
 # Technology Stack
