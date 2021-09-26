@@ -22,11 +22,6 @@ public class HomeController {
     @Autowired
     UserRepository userRepository;
 
-     @Autowired
-    StateRepository stateRepository;
-    @Autowired
-    CityRepository cityRepository;
-
     private static final String userSessionKey = "user";
 
     public User getUserFromSession(HttpSession session) {
@@ -50,43 +45,6 @@ public class HomeController {
 
         model.addAttribute("title", "Welcome to UberMassage");
         model.addAttribute("user", theUser);
-
-//        State Missouri = new State("MO");
-//        State Illinois = new State("IL");
-//
-//        stateRepository.save(Missouri);
-//        stateRepository.save(Illinois);
-
-//        City Columbia = new City("Columbia");
-//        City Joplin = new City("Joplin");
-//        City KansasCity = new City("Kansas City");
-//        City Kirksville = new City("Kirksville");
-//        City LakeOfTheOzarks= new City("Lake of the Ozarks");
-//        City SoutheastMO = new City("Southeast MO");
-//        City Springfield = new City("Springfield");
-//        City StJoseph = new City("St. Joseph");
-//        City StLouis = new City("St. Louis");
-//
-//
-//        cityRepository.save(Columbia);
-//        cityRepository.save(Joplin);
-//        cityRepository.save(KansasCity);
-//        cityRepository.save(Kirksville);
-//        cityRepository.save(LakeOfTheOzarks);
-//        cityRepository.save(SoutheastMO);
-//        cityRepository.save(Springfield);
-//        cityRepository.save(StJoseph);
-//        cityRepository.save(StLouis);
-
-//    for (int i = 36; i < 45; i++) {
-//        Optional<City> cityresult = cityRepository.findById(i);
-//        City acity = cityresult.get();
-//        Optional<State> stateresult = stateRepository.findById(35);
-//        State astate = stateresult.get();
-//
-//        acity.setState(astate);
-//        cityRepository.save(acity);
-//    }
 
         return "index";
     }

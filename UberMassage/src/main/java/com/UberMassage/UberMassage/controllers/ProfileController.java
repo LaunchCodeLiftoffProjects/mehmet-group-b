@@ -71,9 +71,6 @@ public class ProfileController {
 
         deleteAppointment.getTherapist().getTherapist().deleteAppointment(deleteAppointment);
 
-//        deleteAppointment.getClient().setAppointment(null);
-//        deleteAppointment.getTherapist().setAppointment(null);
-
         appointmentRepository.deleteById(appointmentId);
 
         return "profile/index";

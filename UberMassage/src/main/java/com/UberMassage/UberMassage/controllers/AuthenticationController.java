@@ -118,7 +118,6 @@ public class AuthenticationController {
                 registerFormDTO.getPhoneNumber());
 
 
-//        newUser.setTest(1);
         userRepository.save(newUser);
         setUserInSession(request.getSession(), newUser);
 
@@ -159,8 +158,6 @@ public class AuthenticationController {
         }
 
         setUserInSession(request.getSession(), theUser);
-
-        System.out.println(theUser.getId());
 
         return "redirect:profile/" + theUser.getId() ;
 
