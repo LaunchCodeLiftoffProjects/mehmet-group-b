@@ -24,6 +24,9 @@
         <strong>phone number</strong>
         <p th:text="${user.phoneNumber}"></p>
 
+        <a th:href="@{/profile/edit}"><strong>Need to edit your
+            profile?</strong></a>
+
         <div th:if="${user.therapist} != null">
             <br>
             <h3>Therapist Info:</h3>
