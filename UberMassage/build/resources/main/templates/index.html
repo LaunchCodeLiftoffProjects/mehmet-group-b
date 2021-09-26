@@ -8,14 +8,14 @@
 <div class="titleImg"><img class="" src="../images/titleLogo.jpg" alt="title logo" style="width: 100%;"></div>
 
 
-<div class="intro">
+<div class="intro" >
 
         <img class="homeBackground" src="../images/homeBackground1.jpg" alt="Background" style="width: 100%; opacity:50%;">
     
     <div id="introContent">
-        <h2 id="">Bringing a relaxing massage to wherever you are, whenever you are. (Or something way better because you guys are better at writing stuff.)</h2>
+        <h2 id="">Bringing a relaxing massage to wherever you are.</h2>
         
-        <form action="/register">
+        <form action="/register" th:if="${user == null}">
             <button class="introBtn">Sign Up!</button>
         </form>
     </div>
@@ -41,7 +41,7 @@
     </div>
 
 
-    <form action="/register">
+    <form action="/register" th:if="${user == null}">
         <button class="introBtn">Sign Up Now!</button>
     </form>
 </div>
