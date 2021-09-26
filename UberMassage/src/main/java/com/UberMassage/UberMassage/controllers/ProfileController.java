@@ -5,6 +5,7 @@ import com.UberMassage.UberMassage.data.UserRepository;
 import com.UberMassage.UberMassage.models.Appointment;
 import com.UberMassage.UberMassage.models.User;
 import com.UberMassage.UberMassage.models.dto.LoginFormDTO;
+import com.UberMassage.UberMassage.models.dto.RegisterFormDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -76,6 +77,34 @@ public class ProfileController {
         return "profile/index";
     }
 
+    @GetMapping("/edit")
+    public String displayEditPage(Model model, HttpServletRequest request) {
+
+        User theUser = getUserFromSession(request.getSession());
+        model.addAttribute(new RegisterFormDTO());
+        model.addAttribute(theUser);
+
+        return "profile/edit";
+    }
+
+    @PostMapping("/edit")
+    public String handleEditPage(Model model, HttpServletRequest request,
+                                 RegisterFormDTO registerFormDTO) {
+
+        User theUser = getUserFromSession(request.getSession());
+
+        if (registerFormDTO.getEmail() != "") {
+            theUser.setEmail(registerFormDTO.getEmail());
+        }
+        if (registerFormDTO.getPhoneNumber() != "") {
+            theUser.setPhoneNumber(registerFormDTO.getPhoneNumber());
+        }
+
+        userRepository.save(theUser);
+
+        return "redirect:" + theUser.getId();
+    }
+
     private static final String userSessionKey = "user";
 
     public User getUserFromSession(HttpSession session) {
@@ -92,6 +121,8 @@ public class ProfileController {
 
         return user.get();
     }
+
+
 
     private static void setUserInSession(HttpSession session, User user) {
         session.setAttribute(userSessionKey, user.getId());
