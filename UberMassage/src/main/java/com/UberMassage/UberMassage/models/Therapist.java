@@ -86,6 +86,10 @@ public class Therapist {
         this.appointments.add(appointment);
     }
 
+    public void deleteAppointment(Appointment appointment) {
+        this.appointments.remove(appointment);
+    }
+
     public Hours getHoursOfOperation() {
         return hoursOfOperation;
     }

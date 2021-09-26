@@ -68,7 +68,11 @@ public class ProfileController {
                 appointmentRepository.findById(appointmentId).orElse(new Appointment());
 
         deleteAppointment.getClient().setAppointment(null);
-        deleteAppointment.getTherapist().setAppointment(null);
+
+        deleteAppointment.getTherapist().getTherapist().deleteAppointment(deleteAppointment);
+
+//        deleteAppointment.getClient().setAppointment(null);
+//        deleteAppointment.getTherapist().setAppointment(null);
 
         appointmentRepository.deleteById(appointmentId);
 
