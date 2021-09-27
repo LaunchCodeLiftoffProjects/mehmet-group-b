@@ -13,7 +13,8 @@
     <select th:name="pickedTime">
         <option
                 th:each="i : ${#numbers.sequence(therapist.therapist.hoursOfOperation.startTime, therapist.therapist.hoursOfOperation.finishTime)}"
-                th:value="${i}" th:text="${i}">
+                th:value="${i}"
+                th:text="${i <= 12} ? ${i} + ' am' : ${i - 12} + ' pm'">
         </option>
     </select>
     <button type="submit" name="therapistId"
