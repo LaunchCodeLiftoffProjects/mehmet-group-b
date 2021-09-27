@@ -44,7 +44,15 @@
             <th:block
                     th:each="i : ${#numbers.sequence(0, user.therapist.appointments.size() - 1)}">
 
-                <p th:text="${user.therapist.appointments[i].getClient().getFirstName()}"></p>
+                <table>
+                    <tr>
+                        <td
+                                th:text="${user.therapist.appointments[i].getClient().getFirstName()} + '&ensp;-&ensp;'"></td>
+                        <td th:text="${user.therapist.appointments[i].getPickedTime() <= 12} ? ${user.therapist.appointments[i].getPickedTime()} + ' am' :
+                                ${user.therapist.appointments[i].getPickedTime() - 12} + ' pm'"></td>
+                    </tr>
+                </table>
+
             </th:block>
             </th:block>
         </div>
